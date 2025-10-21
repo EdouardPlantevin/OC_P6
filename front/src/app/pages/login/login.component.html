@@ -44,7 +44,15 @@
     </div>
 
     <div class="center-m">
-      <button type="submit" class="flex-1 xs-w-full nowrap" matButton="filled" color="primary">Se connecter</button>
+      <button 
+        type="submit" 
+        class="flex-1 xs-w-full nowrap" 
+        matButton="filled" 
+        color="primary"
+        [disabled]="isLoading"
+      >
+        {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+      </button>
     </div>
   </form>
 </div>

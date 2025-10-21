@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {HeaderComponent} from "../../components/header/header.component";
 import {MatButton} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {RouterLink, Router} from "@angular/router";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,14 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  isLoading = false;
 
-  constructor(private fb: FormBuilder) {}
+  private sessionService = inject(SessionService);
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -50,9 +57,26 @@ export class LoginComponent implements OnInit {
     return !!(field && field.invalid && field.touched);
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Formulaire valide:', this.loginForm.value);
+      this.isLoading = true;
+      
+      const { username, password } = this.loginForm.value;
+      
+      try {
+        const success = await this.sessionService.logIn(username, password);
+        
+        if (success) {
+          console.log('Connexion réussie !');
+          this.router.navigate(['/']);
+        } else {
+          console.log('Échec de la connexion');
+        }
+      } catch (error) {
+        console.error('Erreur lors de la connexion:', error);
+      } finally {
+        this.isLoading = false;
+      }
     } else {
       Object.keys(this.loginForm.controls).forEach(key => {
         this.loginForm.get(key)?.markAsTouched();
