@@ -1,0 +1,57 @@
+<header class="header">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="/assets/logo_p6.png" alt="Logo" />
+  </div>
+
+  <!-- Menu Desktop -->
+  <nav class="desktop-nav">
+    <button mat-button class="nav-item">
+      Articles
+    </button>
+    <button mat-button class="nav-item">
+      Thème
+    </button>
+    <button mat-button class="nav-item logout">
+      Se déconnecter
+    </button>
+    <div class="user-avatar">
+      <mat-icon>account_circle</mat-icon>
+    </div>
+  </nav>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-nav">
+    <button mat-icon-button (click)="toggleMobileMenu()" class="menu-toggle">
+      <mat-icon>{{ isMobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- Overlay Mobile -->
+  <div
+    class="mobile-overlay"
+    [class.active]="isMobileMenuOpen()"
+    (click)="closeMobileMenu()">
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu" [class.active]="isMobileMenuOpen()">
+    <div class="mobile-menu-content">
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()">
+        Articles
+      </button>
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()">
+        Thème
+      </button>
+      <button mat-button class="mobile-nav-item logout" (click)="closeMobileMenu()">
+        Se déconnecter
+      </button>
+
+      <div class="mobile-user-section">
+        <div class="mobile-user-avatar">
+          <mat-icon>account_circle</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

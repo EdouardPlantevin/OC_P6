@@ -1,0 +1,36 @@
+
+<div class="xs-hide">
+  <app-header />
+</div>
+
+<button class="back-btn" (click)="back()">←</button>
+
+<div class="img-wrapper desktop-hide">
+  <img src="/assets/logo_p6.png" alt="Logo" />
+</div>
+
+<div class="flex flex-auto flex-col align-items-center gap-16">
+  <h1>Inscription</h1>
+
+  <form action="#" class="flex flex-col justify-content-center gap-12">
+    <div class="form-group mb-20">
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" />
+    </div>
+
+    <div class="form-group mb-20">
+      <label for="username">Adresse e-mail</label>
+      <input type="text" id="username" />
+    </div>
+
+    <div class="form-group mb-20">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" />
+    </div>
+
+    <div class="center-m">
+      <button type="submit" class="flex-1 xs-w-full nowrap" matButton="filled" color="primary">S'inscrire</button>
+    </div>
+  </form>
+</div>
+
