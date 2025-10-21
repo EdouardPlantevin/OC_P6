@@ -60,15 +60,15 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      
+
       const { username, password } = this.loginForm.value;
-      
+
       try {
         const success = await this.sessionService.logIn(username, password);
-        
+
         if (success) {
           console.log('Connexion réussie !');
-          this.router.navigate(['/']);
+          this.router.navigate(['/theme']);
         } else {
           console.log('Échec de la connexion');
         }
