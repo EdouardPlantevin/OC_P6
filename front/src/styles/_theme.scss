@@ -1,0 +1,20 @@
+body {
+  font-family: var(--font-family), sans-serif;
+  font-optical-sizing: auto;
+  color: var(--text-color);
+}
+
+.btn-danger {
+  color: var(--danger) !important;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  margin: 30px;
+  font-size: 36px;
+}

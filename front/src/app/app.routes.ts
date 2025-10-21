@@ -2,5 +2,16 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent }
+    {
+      path: 'connexion',
+      loadComponent: async () => (await import('./pages/login/login.component')).LoginComponent
+    },
+    {
+      path: 'inscription',
+      loadComponent: async () => (await import('./pages/register/register.component')).RegisterComponent
+    },
+    {
+      path: '',
+      component: HomeComponent
+    },
 ];
