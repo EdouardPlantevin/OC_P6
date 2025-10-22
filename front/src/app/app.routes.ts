@@ -11,8 +11,16 @@ export const routes: Routes = [
       loadComponent: async () => (await import('./pages/register/register.component')).RegisterComponent
     },
     {
-      path: 'theme',
+      path: 'themes',
       loadComponent: async () => (await import('./pages/theme/theme.component')).ThemeComponent
+    },
+    {
+      path: 'articles/:slug',
+      loadComponent: async () => (await import('./pages/article/detail-article/detail-article.component')).DetailArticleComponent
+    },
+    {
+      path: 'articles',
+      loadComponent: async () => (await import('./pages/article/article.component')).ArticleComponent
     },
     {
       path: '',

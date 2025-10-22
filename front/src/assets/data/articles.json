@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "title": "L'impact de l'intelligence artificielle sur le monde du travail",
+    "slug": "limpact-de-lintelligence-artificielle-sur-le-monde-du-travail",
+    "description": "Une analyse approfondie des transformations économiques et sociales causées par l'intégration de l'IA dans les entreprises modernes.",
+    "date": "2025-10-15T10:30:00Z",
+    "theme": "Technologie",
+    "author": "Sophie Martin",
+    "comments": [
+      {
+        "username": "TechLover92",
+        "content": "Article très pertinent ! L'IA change effectivement la manière dont on conçoit le travail."
+      },
+      {
+        "username": "DataNerd",
+        "content": "J’aurais aimé voir plus de chiffres sur l’impact économique, mais l’analyse est solide."
+      },
+      {
+        "username": "AI_Engineer",
+        "content": "Très bon résumé. Il faudrait aussi parler de la régulation de l’IA dans les entreprises."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Les tendances écologiques en 2025",
+    "slug": "les-tendances-ecologiques-en-2025",
+    "description": "Un aperçu des innovations vertes et des nouvelles politiques environnementales mises en œuvre à travers le monde.",
+    "date": "2025-09-30T14:45:00Z",
+    "theme": "Environnement",
+    "author": "Julien Dupont",
+    "comments": [
+      {
+        "username": "EcoFriendly",
+        "content": "Super résumé des tendances actuelles. J'aimerais en savoir plus sur les énergies marines."
+      },
+      {
+        "username": "GreenTech",
+        "content": "Les innovations dans le recyclage sont impressionnantes cette année !"
+      },
+      {
+        "username": "NatureLover",
+        "content": "Très inspirant. On sent un vrai changement de mentalité à l’échelle mondiale."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Comment le télétravail redéfinit la culture d’entreprise",
+    "slug": "comment-le-teletravail-redefinit-la-culture-dentreprise",
+    "description": "Cet article explore les impacts du travail à distance sur la collaboration, la productivité et le bien-être des employés.",
+    "date": "2025-08-20T09:00:00Z",
+    "theme": "Société",
+    "author": "Camille Bernard",
+    "comments": [
+      {
+        "username": "RemoteWorker",
+        "content": "Très juste ! Le télétravail a complètement changé la dynamique de mon équipe."
+      },
+      {
+        "username": "HR_Consultant",
+        "content": "Les entreprises doivent vraiment repenser leur management à distance."
+      },
+      {
+        "username": "WorkLifeBalance",
+        "content": "Enfin un article qui parle aussi du bien-être des employés, pas seulement de la productivité !"
+      }
+    ]
+  }
+]

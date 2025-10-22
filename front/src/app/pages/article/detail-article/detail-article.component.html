@@ -1,0 +1,40 @@
+<app-header />
+
+@if (article() !== null) {
+<div class="hero-top">
+  <button class="back-btn" (click)="back()">←</button>
+
+
+    @let articleData = article()!;
+    <h2>{{ articleData.title }}</h2>
+
+</div>
+
+  <div class="article-wrapper">
+    <div class="flex gap-16">
+      <p>{{ articleData.date | date }}</p>
+      <p>{{ articleData.author }}</p>
+      <p>{{ articleData.theme }}</p>
+    </div>
+
+    <div class="article-content my-20">
+      <p>Content: {{ articleData.description }}</p>
+    </div>
+
+    <hr>
+
+    <h4 class="mt-40">Commentaires</h4>
+
+    <div class="p-20 flex flex-col gap-16">
+      @for (comment of articleData.comments; track $index) {
+        <app-comment [comment]="comment"/>
+      }
+    </div>
+
+    <app-comment-form (commentSubmitted)="onCommentSubmitted($event)" />
+
+
+
+  </div>
+
+}

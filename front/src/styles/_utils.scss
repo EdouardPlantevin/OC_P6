@@ -73,6 +73,18 @@
   margin-bottom: 10px;
 }
 
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mt-40 {
+  margin-top: 40px !important;
+}
+
 .m-10 {
   margin: 10px;
 }
@@ -86,8 +98,21 @@
   margin-bottom: 2px;
 }
 
+.my-20 {
+  margin-bottom: 20px !important;
+  margin-top: 20px !important;
+}
+
 .p-12 {
   padding: 12px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.p-40 {
+  padding: 40px;
 }
 
 .px-12 {

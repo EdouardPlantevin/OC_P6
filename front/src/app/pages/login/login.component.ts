@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
         if (success) {
           console.log('Connexion réussie !');
-          this.router.navigate(['/theme']);
+          this.router.navigate(['/articles']);
         } else {
           console.log('Échec de la connexion');
         }
