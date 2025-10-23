@@ -1,0 +1,88 @@
+<app-header />
+
+<div class="profile-wrapper">
+  <h2>Profil utilisateur</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input 
+        type="text" 
+        formControlName="username"
+        placeholder="Nom d'utilisateur"
+        [class.error]="username?.invalid && username?.touched">
+      
+      @if (username?.invalid && username?.touched) {
+        <div class="error-message">
+          @if (username?.errors?.['required']) {
+            <span>Le nom d'utilisateur est requis</span>
+          }
+          @if (username?.errors?.['minlength']) {
+            <span>Le nom d'utilisateur doit contenir au moins 3 caractères</span>
+          }
+          @if (username?.errors?.['maxlength']) {
+            <span>Le nom d'utilisateur ne peut pas dépasser 30 caractères</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="email" 
+        formControlName="email"
+        placeholder="Email"
+        [class.error]="email?.invalid && email?.touched">
+      
+      @if (email?.invalid && email?.touched) {
+        <div class="error-message">
+          @if (email?.errors?.['required']) {
+            <span>L'email est requis</span>
+          }
+          @if (email?.errors?.['email']) {
+            <span>Veuillez entrer un email valide</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="password" 
+        formControlName="password"
+        placeholder="Nouveau mot de passe (optionnel)"
+        [class.error]="password?.invalid && password?.touched">
+      
+      @if (password?.invalid && password?.touched) {
+        <div class="error-message">
+          @if (password?.errors?.['minlength']) {
+            <span>Le mot de passe doit contenir au moins 6 caractères</span>
+          }
+        </div>
+      }
+    </div>
+
+    <button 
+      type="submit" 
+      matButton="filled" 
+      color="primary"
+      [disabled]="profileForm.invalid || isSubmitting">
+      @if (isSubmitting) {
+        Sauvegarde...
+      } @else {
+        Sauvegarder
+      }
+    </button>
+  </form>
+
+
+  <hr class="my-20">
+
+  <h2>Abonnements</h2>
+
+  <div class="themes-wrapper">
+    @for (theme of mockThemes; track theme.id) {
+      <app-card-theme [theme]="theme" (toggleSubscribe)="toggleSubscribe(theme.id, $event)"></app-card-theme>
+    }
+  </div>
+
+</div>

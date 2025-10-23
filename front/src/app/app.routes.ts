@@ -11,6 +11,10 @@ export const routes: Routes = [
       loadComponent: async () => (await import('./pages/register/register.component')).RegisterComponent
     },
     {
+      path: 'profile',
+      loadComponent: async () => (await import('./pages/profile/profile.component')).ProfileComponent
+    },
+    {
       path: 'themes',
       loadComponent: async () => (await import('./pages/theme/theme.component')).ThemeComponent
     },
