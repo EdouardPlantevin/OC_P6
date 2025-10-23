@@ -1,0 +1,14 @@
+<div class="card">
+
+  @let articleValue = article();
+  <h2>{{ articleValue.title }}</h2>
+
+  <div class="card-info">
+    <span>{{ articleValue.date | date }}</span>
+    <span>{{ articleValue.author }}</span>
+  </div>
+
+  <p class="mt-10">
+    {{ articleValue.description }}
+  </p>
+</div>

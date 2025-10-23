@@ -35,6 +35,15 @@ input.error {
   img {
     width: 100%;
   }
+}
 
+@media screen and (max-width: 820px) {
+
+  .back-btn {
+    top: 0;
+  }
+  .img-wrapper {
+    margin-top: 100px;
+  }
 }
 

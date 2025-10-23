@@ -3,9 +3,9 @@
   <p>{{ theme().description }}</p>
   <div class="flex justify-content-center">
     @if (theme().subscribe) {
-      <button type="submit" matButton="outlined" color="primary" (click)="toggleSubscribe.emit(false)">Déjà abonné</button>
+      <button matButton="outlined" color="primary" (click)="toggleSubscribe.emit(false)">Déjà abonné</button>
     } @else {
-      <button type="submit" matButton="filled" color="primary" (click)="toggleSubscribe.emit(true)">S'abonner</button>
+      <button matButton="filled" color="primary" (click)="toggleSubscribe.emit(true)">S'abonner</button>
     }
   </div>
 </div>

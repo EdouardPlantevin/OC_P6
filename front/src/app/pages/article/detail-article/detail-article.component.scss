@@ -1,0 +1,25 @@
+.hero-top {
+  display: flex;
+  align-items: center;
+}
+
+.article-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 820px) {
+  .article-wrapper {
+    margin-top: 60px;
+    h2 {
+      margin-left: 60px;
+      width: calc(100% - 50px);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<app-header />
+
+
+<div class="top-section">
+  <button matButton="filled" color="primary">Créer un article</button>
+
+  <button (click)="toggleSortOrder()">
+    Trier par <span class="arrow">{{ isDesc() ? '↓' : '↑' }}</span>
+  </button>
+</div>
+
+<div class="articles-wrapper">
+  @for (article of articles(); track article.id) {
+    <a routerLink="/articles/{{ article.slug }}" [state]="{ article }">
+      <app-card-article [article]="article" />
+    </a>
+  }
+</div>
+
+
+
