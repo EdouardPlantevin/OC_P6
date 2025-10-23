@@ -10,13 +10,16 @@
 }
 
 h2 {
-  margin: 0;
   font-size: 24px;
   font-weight: 600;
 }
 
 @media screen and (max-width: 820px) {
-  .hero-top {
-    margin-top: 80px;
+  .article-wrapper {
+    margin-top: 60px;
+    h2 {
+      margin-left: 60px;
+      width: calc(100% - 50px);
+    }
   }
 }

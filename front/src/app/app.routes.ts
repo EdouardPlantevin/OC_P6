@@ -15,6 +15,10 @@ export const routes: Routes = [
       loadComponent: async () => (await import('./pages/theme/theme.component')).ThemeComponent
     },
     {
+      path: 'articles/creation',
+      loadComponent: async () => (await import('./pages/article/article-form/article-form.component')).ArticleFormComponent
+    },
+    {
       path: 'articles/:slug',
       loadComponent: async () => (await import('./pages/article/detail-article/detail-article.component')).DetailArticleComponent
     },

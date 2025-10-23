@@ -1,0 +1,85 @@
+<app-header />
+
+<button class="back-btn" (click)="back()">←</button>
+
+<div class="container">
+  <h2>Créer un nouvel article</h2>
+
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <select formControlName="theme" [class.error]="theme?.invalid && theme?.touched">
+        <option value="">Sélectionner un thème</option>
+        <option value="Tech">Tech</option>
+        <option value="Cuisine">Cuisine</option>
+        <option value="Css">CSS</option>
+        <option value="Environnement">Environnement</option>
+        <option value="Société">Société</option>
+      </select>
+
+      @if (theme?.invalid && theme?.touched) {
+        <div class="error-message">
+          <span>Veuillez sélectionner un thème</span>
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="Titre de l'article"
+        [class.error]="title?.invalid && title?.touched">
+
+      @if (title?.invalid && title?.touched) {
+        <div class="error-message">
+          @if (title?.errors?.['required']) {
+            <span>Le titre est requis</span>
+          }
+          @if (title?.errors?.['minlength']) {
+            <span>Le titre doit contenir au moins 5 caractères</span>
+          }
+          @if (title?.errors?.['maxlength']) {
+            <span>Le titre ne peut pas dépasser 100 caractères</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <textarea
+        formControlName="content"
+        cols="30"
+        rows="10"
+        placeholder="Contenu de l'article"
+        [class.error]="content?.invalid && content?.touched">
+      </textarea>
+
+      @if (content?.invalid && content?.touched) {
+        <div class="error-message">
+          @if (content?.errors?.['required']) {
+            <span>Le contenu est requis</span>
+          }
+          @if (content?.errors?.['minlength']) {
+            <span>Le contenu doit contenir au moins 50 caractères</span>
+          }
+          @if (content?.errors?.['maxlength']) {
+            <span>Le contenu ne peut pas dépasser 2000 caractères</span>
+          }
+        </div>
+      }
+    </div>
+
+    <button
+      type="submit"
+      matButton="filled"
+      color="primary"
+      [disabled]="articleForm.invalid || isSubmitting">
+      @if (isSubmitting) {
+        Création...
+      } @else {
+        Créer
+      }
+    </button>
+  </form>
+</div>
+

@@ -8,20 +8,6 @@
           class="comment-textarea"
           [class.error]="content?.invalid && content?.touched">
         </textarea>
-
-        @if (content?.invalid && content?.touched) {
-          <div class="error-message">
-            @if (content?.errors?.['required']) {
-              <span>Le commentaire doit contenir entre 10 et 500 caractères</span>
-            }
-            @if (content?.errors?.['minlength']) {
-              <span>Le commentaire doit contenir au moins 10 caractères</span>
-            }
-            @if (content?.errors?.['maxlength']) {
-              <span>Le commentaire ne peut pas dépasser 500 caractères</span>
-            }
-          </div>
-        }
       </div>
 
       <button
@@ -34,5 +20,19 @@
         }
       </button>
     </div>
+
+    @if (content?.invalid && content?.touched) {
+      <div class="error-message">
+        @if (content?.errors?.['required']) {
+          <span>Le commentaire doit contenir entre 10 et 500 caractères</span>
+        }
+        @if (content?.errors?.['minlength']) {
+          <span>Le commentaire doit contenir au moins 10 caractères</span>
+        }
+        @if (content?.errors?.['maxlength']) {
+          <span>Le commentaire ne peut pas dépasser 500 caractères</span>
+        }
+      </div>
+    }
   </form>
 </div>

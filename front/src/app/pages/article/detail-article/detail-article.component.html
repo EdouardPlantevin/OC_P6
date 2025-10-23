@@ -1,16 +1,10 @@
 <app-header />
 
+<button class="back-btn" (click)="back()">←</button>
 @if (article() !== null) {
-<div class="hero-top">
-  <button class="back-btn" (click)="back()">←</button>
-
-
-    @let articleData = article()!;
-    <h2>{{ articleData.title }}</h2>
-
-</div>
-
+  @let articleData = article()!;
   <div class="article-wrapper">
+    <h2>{{ articleData.title }}</h2>
     <div class="flex gap-16">
       <p>{{ articleData.date | date }}</p>
       <p>{{ articleData.author }}</p>
