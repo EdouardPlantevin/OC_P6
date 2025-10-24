@@ -6,7 +6,6 @@ import {CardThemeComponent} from "../../components/card-theme/card-theme.compone
 @Component({
   selector: 'app-theme',
   imports: [
-    HeaderComponent,
     CardThemeComponent
   ],
   templateUrl: './theme.component.html',

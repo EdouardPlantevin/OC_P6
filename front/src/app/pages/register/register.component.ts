@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {HeaderComponent} from "../../components/header/header.component";
 import {MatButton} from "@angular/material/button";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
     imports: [
-        HeaderComponent,
         MatButton,
         ReactiveFormsModule
     ],

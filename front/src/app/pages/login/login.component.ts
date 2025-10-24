@@ -1,14 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {HeaderComponent} from "../../components/header/header.component";
 import {MatButton} from "@angular/material/button";
-import {RouterLink, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-login',
   imports: [
-    HeaderComponent,
     MatButton,
     ReactiveFormsModule
   ],

@@ -6,17 +6,17 @@
 
   <!-- Menu Desktop -->
   <nav class="desktop-nav">
-    <button mat-button class="nav-item">
-      Articles
-    </button>
-    <button mat-button class="nav-item">
-      Thème
-    </button>
     <button mat-button class="nav-item logout">
       Se déconnecter
     </button>
-    <div class="user-avatar">
-      <mat-icon>account_circle</mat-icon>
+    <button mat-button class="nav-item" routerLink="/articles" routerLinkActive="active">
+      Articles
+    </button>
+    <button mat-button class="nav-item" routerLink="/themes" routerLinkActive="active">
+      Thème
+    </button>
+    <div class="user-avatar" routerLink="/profile" routerLinkActive="active active-logo">
+      <mat-icon>person</mat-icon>
     </div>
   </nav>
 
@@ -37,19 +37,20 @@
   <!-- Menu Mobile -->
   <div class="mobile-menu" [class.active]="isMobileMenuOpen()">
     <div class="mobile-menu-content">
-      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()">
-        Articles
-      </button>
-      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()">
-        Thème
-      </button>
       <button mat-button class="mobile-nav-item logout" (click)="closeMobileMenu()">
         Se déconnecter
       </button>
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/articles" routerLinkActive="active">
+        Articles
+      </button>
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/themes" routerLinkActive="active">
+        Thème
+      </button>
 
-      <div class="mobile-user-section">
-        <div class="mobile-user-avatar">
-          <mat-icon>account_circle</mat-icon>
+
+      <div class="mobile-user-section" >
+        <div class="user-avatar" (click)="closeMobileMenu()" routerLink="/profile" routerLinkActive="active">
+          <mat-icon>person</mat-icon>
         </div>
       </div>
     </div>

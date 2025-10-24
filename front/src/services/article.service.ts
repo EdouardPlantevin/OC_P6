@@ -11,7 +11,6 @@ export class ArticleService {
   readonly articlesResource: HttpResourceRef<ArticleInterface[] | undefined> =
     httpResource<ArticleInterface[]>(() => 'assets/data/articles.json');
 
-  //get by slug
   getArticleBySlug(slug: string) {
     if (this.articlesResource.value === undefined) {
       return null;

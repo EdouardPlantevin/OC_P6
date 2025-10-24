@@ -1,8 +1,33 @@
+@use './mixin' as mixin;
+
 body {
   font-family: var(--font-family), sans-serif;
   font-optical-sizing: auto;
   color: var(--text-color);
 }
+
+h2 {
+  font-weight: 600 !important;
+  font-size: 24px !important;
+}
+
+input.error {
+  border-color: #f44336;
+  box-shadow: 0 0 0 1px #f44336;
+}
+
+button {
+  height: 40px !important;
+  border-radius: 8px !important;
+}
+
+label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+
+}
+
 
 .btn-danger {
   color: var(--danger) !important;
@@ -21,5 +46,26 @@ body {
   width: 50px;
   left: 10px;
   top: 70px;
+}
+
+.card {
+  border-radius: 16px;
+  background: var(--gray);
+  padding: 10px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@include mixin.mobile-screen() {
+  .container {
+    margin-top: 80px;
+    width: 100% !important;
+  }
 }
 

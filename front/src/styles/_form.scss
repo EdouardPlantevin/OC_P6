@@ -1,0 +1,52 @@
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 4px;
+  display: block;
+  visibility: visible;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  height: 50px;
+  border-width: 1px;
+  opacity: 1;
+  border-radius: 8px;
+  padding: 12px 15px;
+}
+
+button[type="submit"] {
+  width: 150px;
+}
+
+select {
+  padding: 12px 15px;
+  height: 50px;
+  border-width: 1px;
+  opacity: 1;
+  border-radius: 8px;
+}
+
+textarea {
+  padding: 12px 15px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: white;
+  height: 50px;
+}
+
+textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+
+textarea {
+  min-height: 150px;
+  border-width: 1px;
+  opacity: 1;
+  border-radius: 8px;
+}

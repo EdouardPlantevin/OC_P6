@@ -1,9 +1,7 @@
-<app-header />
-
 <button class="back-btn" (click)="back()">←</button>
 
 <div class="container">
-  <h2>Créer un nouvel article</h2>
+  <h2 class="text-center">Créer un nouvel article</h2>
 
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -69,17 +67,20 @@
       }
     </div>
 
-    <button
-      type="submit"
-      matButton="filled"
-      color="primary"
-      [disabled]="articleForm.invalid || isSubmitting">
-      @if (isSubmitting) {
-        Création...
-      } @else {
-        Créer
-      }
-    </button>
+      <div class="flex justify-content-center">
+          <button
+                  type="submit"
+                  matButton="filled"
+                  color="primary"
+                  [disabled]="articleForm.invalid || isSubmitting">
+              @if (isSubmitting) {
+                  Création...
+              } @else {
+                  Créer
+              }
+          </button>
+      </div>
+
   </form>
 </div>
 

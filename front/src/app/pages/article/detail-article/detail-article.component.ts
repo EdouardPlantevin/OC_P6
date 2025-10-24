@@ -1,5 +1,4 @@
-import {Component, computed, effect, inject, Signal} from '@angular/core';
-import { HeaderComponent } from '../../../components/header/header.component';
+import {Component, computed, inject, Signal} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../../../../services/article.service';
 import {ArticleInterface} from "../../../../interfaces/article.interface";
@@ -10,7 +9,7 @@ import {CommentFormComponent} from "../../../components/article/comment-form/com
 @Component({
   selector: 'app-detail-article',
   standalone: true,
-  imports: [HeaderComponent, DatePipe, CommentComponent, CommentFormComponent],
+  imports: [DatePipe, CommentComponent, CommentFormComponent],
   templateUrl: './detail-article.component.html',
   styleUrl: './detail-article.component.scss'
 })

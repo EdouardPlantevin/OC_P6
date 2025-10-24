@@ -1,8 +1,7 @@
-<app-header />
 
 
-<div class="top-section">
-  <button matButton="filled" color="primary">Créer un article</button>
+<div class="flex space-between xs-flex-col my-20">
+  <button matButton="filled" color="primary" routerLink="/articles/creation">Créer un article</button>
 
   <button (click)="toggleSortOrder()">
     Trier par <span class="arrow">{{ isDesc() ? '↓' : '↑' }}</span>
