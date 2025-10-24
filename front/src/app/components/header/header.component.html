@@ -6,17 +6,17 @@
 
   <!-- Menu Desktop -->
   <nav class="desktop-nav">
-    <button mat-button class="nav-item" routerLink="/articles">
-      Articles
-    </button>
-    <button mat-button class="nav-item" routerLink="/themes">
-      Thème
-    </button>
     <button mat-button class="nav-item logout">
       Se déconnecter
     </button>
-    <div class="user-avatar" routerLink="/profile">
-      <mat-icon>account_circle</mat-icon>
+    <button mat-button class="nav-item" routerLink="/articles" routerLinkActive="active">
+      Articles
+    </button>
+    <button mat-button class="nav-item" routerLink="/themes" routerLinkActive="active">
+      Thème
+    </button>
+    <div class="user-avatar" routerLink="/profile" routerLinkActive="active active-logo">
+      <mat-icon>person</mat-icon>
     </div>
   </nav>
 
