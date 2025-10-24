@@ -37,19 +37,20 @@
   <!-- Menu Mobile -->
   <div class="mobile-menu" [class.active]="isMobileMenuOpen()">
     <div class="mobile-menu-content">
-      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/articles">
-        Articles
-      </button>
-      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/themes">
-        Thème
-      </button>
       <button mat-button class="mobile-nav-item logout" (click)="closeMobileMenu()">
         Se déconnecter
       </button>
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/articles" routerLinkActive="active">
+        Articles
+      </button>
+      <button mat-button class="mobile-nav-item" (click)="closeMobileMenu()" routerLink="/themes" routerLinkActive="active">
+        Thème
+      </button>
+
 
       <div class="mobile-user-section" >
-        <div class="mobile-user-avatar" (click)="closeMobileMenu()" routerLink="/profile">
-          <mat-icon>account_circle</mat-icon>
+        <div class="user-avatar" (click)="closeMobileMenu()" routerLink="/profile" routerLinkActive="active">
+          <mat-icon>person</mat-icon>
         </div>
       </div>
     </div>
