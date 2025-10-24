@@ -2,7 +2,6 @@ import { Component, inject, output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButton } from "@angular/material/button";
-import { HeaderComponent } from "../../components/header/header.component";
 import { CardThemeComponent } from "../../components/card-theme/card-theme.component";
 import { ThemeInterface } from "../../../interfaces/theme.interface";
 
@@ -10,7 +9,6 @@ import { ThemeInterface } from "../../../interfaces/theme.interface";
   selector: 'app-profile',
   imports: [
     MatButton,
-    HeaderComponent,
     CardThemeComponent,
     ReactiveFormsModule,
     CommonModule
@@ -20,10 +18,9 @@ import { ThemeInterface } from "../../../interfaces/theme.interface";
 })
 export class ProfileComponent {
   private fb = inject(FormBuilder);
-  
-  // Output pour émettre les données du profil
+
   profileUpdated = output<{ username: string; email: string; password?: string }>();
-  
+
   profileForm: FormGroup;
   isSubmitting = false;
 
@@ -38,21 +35,18 @@ export class ProfileComponent {
   onSubmit(): void {
     if (this.profileForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
-      
+
       const profileData = {
         username: this.profileForm.value.username,
         email: this.profileForm.value.email,
         password: this.profileForm.value.password || undefined
       };
-      
-      // Émettre les données du profil
+
       this.profileUpdated.emit(profileData);
-      
-      // Réinitialiser le mot de passe après soumission
+
       this.profileForm.patchValue({ password: '' });
       this.isSubmitting = false;
     } else {
-      // Marquer tous les champs comme touchés pour afficher les erreurs
       this.markFormGroupTouched();
     }
   }

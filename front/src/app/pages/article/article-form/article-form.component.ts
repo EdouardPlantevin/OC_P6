@@ -1,13 +1,11 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../../../components/header/header.component";
 import { MatButton } from "@angular/material/button";
 
 @Component({
   selector: 'app-article-form',
   imports: [
-    HeaderComponent,
     MatButton,
     ReactiveFormsModule,
     CommonModule

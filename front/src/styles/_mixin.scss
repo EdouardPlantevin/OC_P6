@@ -1,0 +1,22 @@
+@mixin mobile-screen($max: 820px) {
+  @media screen and (max-width: #{$max}) {
+    @content;
+  }
+}
+
+@mixin desktop-screen($min: 821px) {
+  @media screen and (min-width: #{$min}) {
+    @content;
+  }
+}
+
+@mixin grid($repeat: 1, $columns: 1fr, $xsRepeat: 1) {
+  display: grid;
+  grid-template-columns: repeat($repeat, $columns);
+  grid-auto-rows: $columns;
+  gap: 20px;
+
+  @include mobile-screen() {
+    grid-template-columns: repeat($xsRepeat, $columns);
+  }
+}

@@ -1,16 +1,14 @@
-<app-header />
-
 <div class="profile-wrapper">
   <h2>Profil utilisateur</h2>
 
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <input 
-        type="text" 
+      <input
+        type="text"
         formControlName="username"
         placeholder="Nom d'utilisateur"
         [class.error]="username?.invalid && username?.touched">
-      
+
       @if (username?.invalid && username?.touched) {
         <div class="error-message">
           @if (username?.errors?.['required']) {
@@ -27,12 +25,12 @@
     </div>
 
     <div class="form-group">
-      <input 
-        type="email" 
+      <input
+        type="email"
         formControlName="email"
         placeholder="Email"
         [class.error]="email?.invalid && email?.touched">
-      
+
       @if (email?.invalid && email?.touched) {
         <div class="error-message">
           @if (email?.errors?.['required']) {
@@ -46,12 +44,12 @@
     </div>
 
     <div class="form-group">
-      <input 
-        type="password" 
+      <input
+        type="password"
         formControlName="password"
         placeholder="Nouveau mot de passe (optionnel)"
         [class.error]="password?.invalid && password?.touched">
-      
+
       @if (password?.invalid && password?.touched) {
         <div class="error-message">
           @if (password?.errors?.['minlength']) {
@@ -61,9 +59,9 @@
       }
     </div>
 
-    <button 
-      type="submit" 
-      matButton="filled" 
+    <button
+      type="submit"
+      matButton="filled"
       color="primary"
       [disabled]="profileForm.invalid || isSubmitting">
       @if (isSubmitting) {

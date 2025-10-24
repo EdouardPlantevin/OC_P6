@@ -25,9 +25,7 @@ export class CommentFormComponent {
   onSubmit(): void {
     if (this.commentForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
-
       this.commentSubmitted.emit(this.commentForm.value.content);
-
       this.commentForm.reset();
       this.isSubmitting = false;
     }

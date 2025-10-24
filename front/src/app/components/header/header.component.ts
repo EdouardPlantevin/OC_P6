@@ -4,6 +4,7 @@ import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { CommonModule } from '@angular/common';
 import {SessionService} from "../../../services/session.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ import {SessionService} from "../../../services/session.service";
     MatIconModule,
     MatIconButton,
     MatSidenavModule,
-    MatButton
+    MatButton,
+    RouterLink
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

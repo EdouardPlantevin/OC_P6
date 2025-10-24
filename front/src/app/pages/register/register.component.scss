@@ -1,51 +1,15 @@
-:root {
-  display: flex;
-  background: red;
-}
+@use 'mixin' as mixin;
 
 form {
   width: 300px;
   margin: 0 auto;
 }
 
-.error-message {
-  color: #f44336 !important;
-  font-size: 12px !important;
-  margin-top: 4px !important;
-  margin-left: 4px !important;
-  display: block !important;
-  visibility: visible !important;
-}
-
-input.error {
-  border-color: #f44336 !important;
-  box-shadow: 0 0 0 1px #f44336 !important;
-}
-
-.form-group .error-message {
-  color: #f44336 !important;
-  font-size: 12px !important;
-  margin-top: 4px !important;
-  margin-left: 4px !important;
-  display: block !important;
-  visibility: visible !important;
-}
-
-.img-wrapper {
-  img {
-    width: 100%;
-  }
-
-}
-
-@media screen and (max-width: 820px) {
-
+@include mixin.mobile-screen() {
   .back-btn {
     top: 0;
   }
-  .img-wrapper {
-    margin-top: 100px;
-  }
 }
+
 
 

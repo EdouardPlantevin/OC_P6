@@ -1,38 +1,35 @@
-<div class="comment-form">
+<div class="comment-form my-20">
   <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-    <div class="form-content">
-      <div class="textarea-group">
-        <textarea
-          formControlName="content"
-          placeholder="Écrivez ici votre commentaire"
-          class="comment-textarea"
-          [class.error]="content?.invalid && content?.touched">
-        </textarea>
+    <div class="flex align-items-center gap-16 w-full justify-content-center">
+        <div class="flex flex-col w-full">
+            <textarea
+              formControlName="content"
+              placeholder="Écrivez ici votre commentaire"
+              class="comment-textarea">
+            </textarea>
       </div>
 
       <button
         type="submit"
-        class="send-button"
-        [disabled]="commentForm.invalid || isSubmitting">
+        class="send-button">
         <img src="/assets/send.png" alt="Envoyer" />
-        @if (isSubmitting) {
-          <span>Envoi...</span>
-        }
       </button>
     </div>
 
-    @if (content?.invalid && content?.touched) {
-      <div class="error-message">
-        @if (content?.errors?.['required']) {
-          <span>Le commentaire doit contenir entre 10 et 500 caractères</span>
-        }
-        @if (content?.errors?.['minlength']) {
-          <span>Le commentaire doit contenir au moins 10 caractères</span>
-        }
-        @if (content?.errors?.['maxlength']) {
-          <span>Le commentaire ne peut pas dépasser 500 caractères</span>
-        }
-      </div>
-    }
+      @if (content?.invalid && content?.touched) {
+          <div class="error-message">
+              @if (content?.errors?.['required']) {
+                  <span>Le commentaire doit contenir entre 10 et 500 caractères</span>
+              }
+              @if (content?.errors?.['minlength']) {
+                  <span>Le commentaire doit contenir au moins 10 caractères</span>
+              }
+              @if (content?.errors?.['maxlength']) {
+                  <span>Le commentaire ne peut pas dépasser 500 caractères</span>
+              }
+          </div>
+      }
+
+
   </form>
 </div>
