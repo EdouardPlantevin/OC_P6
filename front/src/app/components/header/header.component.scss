@@ -73,7 +73,7 @@
       }
 
       &.logout {
-        color: var(--error-color, #d32f2f);
+        color: var(--error-color, #A40F0F);
 
         &:hover {
           background-color: rgba(211, 47, 47, 0.1);
@@ -149,7 +149,7 @@
         color: var(--text-color, #333333);
 
         &.logout {
-          color: var(--error-color, #d32f2f);
+          color: var(--error-color, #A40F0F);
         }
       }
 
