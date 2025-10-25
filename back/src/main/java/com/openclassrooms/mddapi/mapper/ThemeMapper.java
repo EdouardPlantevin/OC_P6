@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.service;
+package com.openclassrooms.mddapi.mapper;
 
 import com.openclassrooms.mddapi.entity.Theme;
 import com.openclassrooms.mddapi.model.ThemeDto;
