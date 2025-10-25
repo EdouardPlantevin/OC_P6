@@ -15,8 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -50,7 +48,7 @@ public class UserService {
         
         String token = jwtService.createToken(authentication);
         
-        AppUser user = findByUsername(credentials.login())
+        AppUser user = userRepository.findByLogin(credentials.login())
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
         
         var userDto = appUserMapper.toDto(user);
@@ -64,13 +62,8 @@ public class UserService {
         );
     }
 
-    public Optional<AppUser> findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-
     private boolean isEmailExists(String email) {
-        Optional<AppUser> user = userRepository.findByEmail(email);
-        return user.isPresent();
+        return userRepository.findByEmail(email).isPresent();
     }
 
 }
