@@ -1,6 +1,6 @@
 
 <div class="themes-wrapper">
-  @for (theme of mockThemes; track theme.id) {
+  @for (theme of themes(); track theme.id) {
     <app-card-theme [theme]="theme" (toggleSubscribe)="toggleSubscribe(theme.id, $event)"></app-card-theme>
   }
 </div>

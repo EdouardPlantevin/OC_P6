@@ -9,7 +9,7 @@ public record ThemeDto(
 
         @NotBlank()
         @Size(min = 3, max = 50)
-        String name,
+        String title,
 
         @NotBlank()
         @Size(min = 3, max = 1000)
