@@ -1,7 +1,6 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.entity.AppUser;
-import com.openclassrooms.mddapi.exception.EmailAlreadyExistException;
 import com.openclassrooms.mddapi.mapper.AppUserMapper;
 import com.openclassrooms.mddapi.model.LoginResponse;
 import com.openclassrooms.mddapi.model.UserCredentials;
@@ -14,6 +13,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,10 +28,19 @@ public class UserService {
     private final JwtService jwtService;
     private final AppUserMapper appUserMapper;
 
+    /**
+     * Saves a new user to the database.
+     * 
+     * @param userRegister the user to save
+     * @throws ResponseStatusException if the login already exists
+     */
     public void saveUser(UserRegister userRegister) {
 
-        if (isEmailExists(userRegister.email())) {
-            throw new EmailAlreadyExistException(userRegister.email());
+        if (isLoginExists(userRegister.email()) || isLoginExists(userRegister.username())) {
+            throw new ResponseStatusException(
+                HttpStatus.CONFLICT,
+                userRegister.email() + " already exist"
+            );
         }
 
         AppUser appUser = new AppUser();
@@ -62,8 +74,9 @@ public class UserService {
         );
     }
 
-    private boolean isEmailExists(String email) {
-        return userRepository.findByEmail(email).isPresent();
+    private boolean isLoginExists(String login) {
+        Optional<AppUser> user = userRepository.findByLogin(login);
+        return user.isPresent();
     }
 
 }
