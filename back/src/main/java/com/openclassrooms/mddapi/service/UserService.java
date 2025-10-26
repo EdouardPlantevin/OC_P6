@@ -85,7 +85,7 @@ public class UserService {
         String newPassword = userToUpdate.password();
 
         if (newPassword != null && !newPassword.isBlank()) {
-            String passwordPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$";
+            String passwordPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
             if (!newPassword.matches(passwordPattern)) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

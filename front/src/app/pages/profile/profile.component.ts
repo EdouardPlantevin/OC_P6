@@ -41,7 +41,7 @@ export class ProfileComponent {
     this.profileForm = this.fb.group({
       username: [currentUsername, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: [currentEmail, [Validators.required, Validators.email]],
-      password: ['', [Validators.minLength(6)]]
+      password: ['', [Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]]
     });
   }
 

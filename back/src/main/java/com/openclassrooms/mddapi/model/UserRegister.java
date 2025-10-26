@@ -13,7 +13,7 @@ public record UserRegister(
         String email,
 
         @NotBlank()
-        @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$")
+        @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
         String password
 ) {
 }
