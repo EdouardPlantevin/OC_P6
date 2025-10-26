@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
   }
 
   back() {
-    window.history.back();
+    this.router.navigateByUrl('/');
   }
 
 }

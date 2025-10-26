@@ -68,6 +68,6 @@ export class ArticleFormComponent {
   get content() { return this.articleForm.get('content'); }
 
   back() {
-    window.history.back();
+    this.router.navigateByUrl('/articles');
   }
 }

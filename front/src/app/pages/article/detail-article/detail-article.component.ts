@@ -48,7 +48,7 @@ export class DetailArticleComponent {
   }
 
   back() {
-    window.history.back();
+    this.router.navigateByUrl('/articles');
   }
 
 }
