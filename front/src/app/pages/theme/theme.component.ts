@@ -18,14 +18,6 @@ export class ThemeComponent {
 
   themes = computed(() => this.themeService.themesResource.value());
 
-  constructor() {
-    effect(() => {
-      console.log("Themes updated: ", this.themes());
-    });
-  }
-
-  mockThemes: ThemeInterface[] = []
-
   toggleSubscribe(id: number, action: boolean) {
     console.log("Change theme id " + id + " subscribe to " + action)
   }

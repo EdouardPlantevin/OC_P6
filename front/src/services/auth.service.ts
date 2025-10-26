@@ -8,7 +8,7 @@ import {RegisterRequestInterface} from "../interfaces/register-request.interface
 })
 export class AuthService {
 
-  private pathAuth = 'http://localhost:8080/api/auth';
+  private pathAuth = '/api/auth';
 
   public async login(loginRequestInterface: LoginRequestInterface): Promise<SessionInformationInterface> {
     const response = await fetch(`${this.pathAuth}/login`, {

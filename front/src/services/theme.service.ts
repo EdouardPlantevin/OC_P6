@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import {httpResource, HttpResourceRef} from "@angular/common/http";
+import {inject, Injectable} from '@angular/core';
+import {HttpClient, httpResource, HttpResourceRef} from "@angular/common/http";
 import {ThemeInterface} from "../interfaces/theme.interface";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
