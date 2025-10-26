@@ -2,7 +2,6 @@ package com.openclassrooms.mddapi.controller;
 
 
 import com.openclassrooms.mddapi.model.SubscriptionRequest;
-import com.openclassrooms.mddapi.model.ThemeDto;
 import com.openclassrooms.mddapi.model.ThemeResponse;
 import com.openclassrooms.mddapi.service.ThemeService;
 import io.swagger.v3.oas.annotations.Operation;

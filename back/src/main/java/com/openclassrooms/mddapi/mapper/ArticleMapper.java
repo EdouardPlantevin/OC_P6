@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ArticleMapper {
 
-    private final ThemeMapper themeMapper;
-    private final AppUserMapper appUserMapper;
     private final CommentMapper commentMapper;
 
     public ArticleDto toDto(Article article) {

@@ -1,7 +1,6 @@
 package com.openclassrooms.mddapi.mapper;
 
 import com.openclassrooms.mddapi.entity.Theme;
-import com.openclassrooms.mddapi.model.ThemeDto;
 import com.openclassrooms.mddapi.model.ThemeResponse;
 import org.springframework.stereotype.Component;
 

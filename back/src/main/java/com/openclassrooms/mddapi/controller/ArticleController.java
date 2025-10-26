@@ -32,7 +32,6 @@ public class ArticleController {
         return articleService.findAll();
     }
 
-
     @PostMapping
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public ResponseEntity<Void> createArticle(
