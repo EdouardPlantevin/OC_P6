@@ -33,4 +33,8 @@ export class HeaderComponent {
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
   }
+
+  logout() {
+    this.sessionService.logOut();
+  }
 }

@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.entity.AppUser;
 import com.openclassrooms.mddapi.entity.Theme;
 import com.openclassrooms.mddapi.mapper.ThemeMapper;
 import com.openclassrooms.mddapi.model.ThemeDto;
+import com.openclassrooms.mddapi.model.ThemeResponse;
 import com.openclassrooms.mddapi.repository.ThemeRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,10 +27,15 @@ public class ThemeService {
      *
      * @return a list of ThemeDto objects representing all the themes in the repository
      */
-    public List<ThemeDto> findAll() {
+    public List<ThemeResponse> findAll(Jwt jwt) {
+        AppUser appUser = userRepository.findByUsername(jwt.getSubject())
+                .orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé: login = " + jwt.getSubject()));
+
+        List<Long> subscriptions = appUser.getThemes().stream().map(Theme::getId).toList();
+
         return themeRepository.findAll()
                 .stream()
-                .map(themeMapper::toDto)
+                .map(theme -> themeMapper.toDto(theme, subscriptions))
                 .toList();
     }
 

@@ -4,7 +4,6 @@ import com.openclassrooms.mddapi.entity.AppUser;
 import com.openclassrooms.mddapi.entity.Article;
 import com.openclassrooms.mddapi.entity.Theme;
 import com.openclassrooms.mddapi.mapper.ArticleMapper;
-import com.openclassrooms.mddapi.mapper.ThemeMapper;
 import com.openclassrooms.mddapi.model.ArticleDto;
 import com.openclassrooms.mddapi.model.ArticleToCreate;
 import com.openclassrooms.mddapi.repository.ArticleRepository;

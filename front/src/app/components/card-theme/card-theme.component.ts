@@ -1,4 +1,4 @@
-import {Component, input, output} from '@angular/core';
+import {Component, effect, input, output} from '@angular/core';
 import {ThemeInterface} from "../../../interfaces/theme.interface";
 import {MatButton} from "@angular/material/button";
 
@@ -12,7 +12,6 @@ import {MatButton} from "@angular/material/button";
 })
 export class CardThemeComponent {
   theme = input.required<ThemeInterface>();
-  toggleSubscribe = output<boolean>();
-
-
+  subscribe = output<boolean>();
+  canUnsubscribe = input<boolean>(false);
 }

@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.model.SubscriptionRequest;
 import com.openclassrooms.mddapi.model.ThemeDto;
+import com.openclassrooms.mddapi.model.ThemeResponse;
 import com.openclassrooms.mddapi.service.ThemeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
@@ -29,8 +30,8 @@ public class ThemeController {
 
     @GetMapping()
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
-    public List<ThemeDto> findAll() {
-        return themeService.findAll();
+    public List<ThemeResponse> findAll(@AuthenticationPrincipal Jwt jwt) {
+        return themeService.findAll(jwt);
     }
 
     @PostMapping()

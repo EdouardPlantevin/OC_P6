@@ -19,7 +19,7 @@ public class ArticleMapper {
                 article.getCreatedAt(),
                 appUserMapper.toDto(article.getAuthor()),
                 article.getContent(),
-                themeMapper.toDto(article.getTheme())
+                article.getTheme().getTitle()
         );
     }
 }

@@ -54,8 +54,22 @@
       }
     </div>
 
+    @if (errorMessage) {
+      <div class="error-message mb-20">
+        {{ errorMessage }}
+      </div>
+    }
+
     <div class="center-m">
-      <button type="submit" class="flex-1 xs-w-full nowrap" matButton="filled" color="primary">S'inscrire</button>
+      <button 
+        type="submit" 
+        class="flex-1 xs-w-full nowrap" 
+        matButton="filled" 
+        color="primary"
+        [disabled]="isLoading"
+      >
+        {{ isLoading ? 'Inscription...' : 'S\'inscrire' }}
+      </button>
     </div>
   </form>
 </div>
