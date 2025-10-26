@@ -9,16 +9,16 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col justify-content-center gap-12">
     <div class="form-group mb-20">
-      <label for="username">E-mail ou nom d'utilisateur</label>
+      <label for="login">E-mail ou nom d'utilisateur</label>
       <input
         type="text"
-        id="username"
-        formControlName="username"
-        [class.error]="isFieldInvalid('username')"
+        id="login"
+        formControlName="login"
+        [class.error]="isFieldInvalid('login')"
       />
-      @if (isFieldInvalid('username')) {
+      @if (isFieldInvalid('login')) {
         <div class="error-message">
-          {{ getErrorMessage('username') }}
+          {{ getErrorMessage('login') }}
         </div>
       }
     </div>
@@ -37,6 +37,12 @@
         </div>
       }
     </div>
+
+    @if (errorMessage) {
+      <div class="error-message mb-20">
+        {{ errorMessage }}
+      </div>
+    }
 
     <div class="center-m">
       <button

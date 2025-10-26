@@ -1,7 +1,8 @@
-import { Component, signal, computed } from '@angular/core';
+import {Component, signal, computed, inject} from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HeaderComponent } from './components/header/header.component';
+import {SessionService} from "../services/session.service";
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
 export class AppComponent {
   currentUrl = signal<string>('/');
   isMobile = signal<boolean>(window.innerWidth < 768);
+  private sessionService = inject(SessionService)
 
   noHeaderRoutes = ['/'];
   desktopOnlyRoutes = ['/', '/connexion', '/inscription'];

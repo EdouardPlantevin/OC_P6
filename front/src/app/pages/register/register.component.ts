@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {AuthService} from "../../../services/auth.service";
+import {RegisterRequestInterface} from "../../../interfaces/register-request.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,9 +15,14 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private fb = inject(FormBuilder);
+
+  registerForm!: FormGroup;
+  isLoading = false;
+  errorMessage = '';
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -49,14 +57,30 @@ export class RegisterComponent implements OnInit {
     return !!(field && field.invalid && field.touched);
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.registerForm.valid) {
-      console.log('Formulaire valide:', this.registerForm.value);
+      this.isLoading = true;
+      this.errorMessage = '';
+
+      try {
+        const registerData = this.registerForm.value as RegisterRequestInterface;
+        await this.authService.register(registerData);
+        await this.router.navigateByUrl('/connexion');
+      } catch (error: any) {
+        if (error.status === 400) {
+          this.errorMessage = 'Les informations fournies ne sont pas valides';
+        } else if (error.status === 409) {
+          this.errorMessage = 'Cet email ou nom d\'utilisateur est déjà utilisé';
+        } else {
+          this.errorMessage = 'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.';
+        }
+      } finally {
+        this.isLoading = false;
+      }
     } else {
       Object.keys(this.registerForm.controls).forEach(key => {
         this.registerForm.get(key)?.markAsTouched();
       });
-      console.log('Formulaire invalide');
     }
   }
 

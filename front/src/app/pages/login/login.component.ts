@@ -3,6 +3,9 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SessionService } from '../../../services/session.service';
+import {LoginRequestInterface} from "../../../interfaces/login-request.interface";
+import {AuthService} from "../../../services/auth.service";
+import {SessionInformationInterface} from "../../../interfaces/session-information.interface";
 
 @Component({
   selector: 'app-login',
@@ -16,17 +19,16 @@ import { SessionService } from '../../../services/session.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isLoading = false;
+  errorMessage = '';
 
   private sessionService = inject(SessionService);
-
-  constructor(
-    private fb: FormBuilder,
-    private router: Router
-  ) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private fb = inject(FormBuilder);
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      login: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   getFieldLabel(fieldName: string): string {
     const labels: { [key: string]: string } = {
-      username: 'E-mail ou nom d\'utilisateur',
+      login: 'E-mail ou nom d\'utilisateur',
       password: 'Mot de passe'
     };
     return labels[fieldName] || fieldName;
@@ -58,20 +60,24 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading = true;
-
-      const { username, password } = this.loginForm.value;
+      this.errorMessage = '';
 
       try {
-        const success = await this.sessionService.logIn(username, password);
-
-        if (success) {
-          console.log('Connexion réussie !');
-          this.router.navigate(['/articles']);
-        } else {
-          console.log('Échec de la connexion');
-        }
-      } catch (error) {
+          const loginRequest = this.loginForm.value as LoginRequestInterface;
+          const sessionInformation: SessionInformationInterface = await this.authService.login(loginRequest);
+          this.sessionService.logIn(sessionInformation);
+          await this.router.navigateByUrl('/articles');
+      } catch (error: any) {
         console.error('Erreur lors de la connexion:', error);
+
+        // Gérer les erreurs HTTP
+        if (error.status === 401 || error.status === 403) {
+          this.errorMessage = 'E-mail ou utilisateur ou mot de passe ne sont pas bons';
+        } else if (error.status === 0) {
+          this.errorMessage = 'Impossible de se connecter au serveur. Vérifiez votre connexion.';
+        } else {
+          this.errorMessage = 'Une erreur est survenue lors de la connexion. Veuillez réessayer.';
+        }
       } finally {
         this.isLoading = false;
       }
