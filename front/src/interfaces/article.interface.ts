@@ -4,13 +4,12 @@ export interface ArticleInterface {
   createdAt: Date;
   content: string;
   theme: string;
-  author: [
-    {
-      username: string;
-    }
-  ];
-  comments?: Array<{
+  author: {
     username: string;
+  };
+  comments?: Array<{
     content: string;
+    createdAt: Date;
+    author: string;
   }>;
 }

@@ -29,6 +29,12 @@ export class ArticleComponent {
     });
   });
 
+  constructor() {
+    effect(() => {
+      console.log(this.articles());
+    });
+  }
+
   toggleSortOrder(): void {
     this.isDesc.set(!this.isDesc());
   }
