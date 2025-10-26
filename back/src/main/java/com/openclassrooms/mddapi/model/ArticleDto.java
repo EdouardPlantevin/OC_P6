@@ -21,6 +21,6 @@ public record ArticleDto(
         String content,
 
         @NotNull
-        ThemeDto theme
+        String theme
 ) {
 }

@@ -69,8 +69,7 @@ public class UserService {
                 token,
                 userDto.id(),
                 userDto.email(),
-                userDto.username(),
-                userDto.themes()
+                userDto.username()
         );
     }
 

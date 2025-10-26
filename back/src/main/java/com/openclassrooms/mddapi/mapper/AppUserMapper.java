@@ -15,11 +15,7 @@ public class AppUserMapper {
         return new AppUserDto(
                 appUser.getId(),
                 appUser.getEmail(),
-                appUser.getUsername(),
-                appUser.getThemes()
-                        .stream()
-                        .map(themeMapper::toDto)
-                        .toList()
+                appUser.getUsername()
         );
     }
 }

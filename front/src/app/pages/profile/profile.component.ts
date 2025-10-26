@@ -22,14 +22,7 @@ export class ProfileComponent {
   private fb = inject(FormBuilder);
   private themeService = inject(ThemeService);
 
-  themesSubscribe = computed(() => {
-    const themes = this.themeService.themesResource.value()
-    if (!themes) {
-      return [];
-    }
-    return themes.filter(theme => theme.subscribe);
-
-  });
+  themesSubscribe = this.themeService.themesSubscribe;
 
   profileUpdated = output<{ username: string; email: string; password?: string }>();
 
