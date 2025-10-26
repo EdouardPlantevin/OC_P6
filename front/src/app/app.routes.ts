@@ -30,7 +30,7 @@ export const routes: Routes = [
       loadComponent: async () => (await import('./pages/article/article-form/article-form.component')).ArticleFormComponent
     },
     {
-      path: 'articles/:slug',
+      path: 'articles/:id',
       canActivate: [AuthGuard],
       loadComponent: async () => (await import('./pages/article/detail-article/detail-article.component')).DetailArticleComponent
     },

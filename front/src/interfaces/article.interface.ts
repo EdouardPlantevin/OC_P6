@@ -1,13 +1,15 @@
 export interface ArticleInterface {
   id: number;
-  slug: string;
   title: string;
-  description: string;
-  date: Date;
+  createdAt: Date;
+  content: string;
   theme: string;
-  author: string;
-  comments: [{
+  author: {
     username: string;
+  };
+  comments?: Array<{
     content: string;
-  }];
+    createdAt: Date;
+    author: string;
+  }>;
 }
