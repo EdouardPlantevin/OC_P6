@@ -1,5 +1,5 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {SessionInformationInterface} from "../interfaces/session-information.interface";
+import {SessionInterface} from "../interfaces/session.interface";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -12,28 +12,25 @@ export class SessionService {
   private _isLoggedIn = signal<boolean>(false);
   public isLoggedIn = this._isLoggedIn.asReadonly();
 
-  private _currentUser = signal<SessionInformationInterface | null>(null);
+  private _currentUser = signal<SessionInterface | null>(null);
   public currentUser = this._currentUser.asReadonly();
 
   constructor() {
     this.checkExistingSession();
   }
 
-  logIn(sessionInformationInterface: SessionInformationInterface): void {
+  logIn(sessionInformationInterface: SessionInterface): void {
     this._currentUser.set(sessionInformationInterface);
     this._isLoggedIn.set(true);
 
     localStorage.setItem('user', JSON.stringify(sessionInformationInterface));
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('token', sessionInformationInterface.token);
   }
 
   logOut(): void {
     this._currentUser.set(null);
     this._isLoggedIn.set(false);
 
-
-    localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('isLoggedIn');
 

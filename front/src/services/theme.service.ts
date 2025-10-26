@@ -18,7 +18,7 @@ export class ThemeService {
   });
 
   public async toggleSubscription(id: number): Promise<void> {
-    await firstValueFrom(this.http.post<void>(this.pathTheme, { themeId: Number(id) }));
+    await firstValueFrom(this.http.post<void>(`${this.pathTheme}/toggle-subscription`, { themeId: Number(id) }));
     this.themesResource.reload();
   }
 }

@@ -52,8 +52,8 @@
 
       @if (password?.invalid && password?.touched) {
         <div class="error-message">
-          @if (password?.errors?.['minlength']) {
-            <span>Le mot de passe doit contenir au moins 6 caractères</span>
+          @if (password?.errors?.['pattern']) {
+            <span>Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un caractère spécial.</span>
           }
         </div>
       }

@@ -4,6 +4,9 @@ import { ArticleService } from '../../../../services/article.service';
 import {DatePipe} from "@angular/common";
 import {CommentComponent} from "../../../components/article/comment/comment.component";
 import {CommentFormComponent} from "../../../components/article/comment-form/comment-form.component";
+import {ArticleInterface} from "../../../../interfaces/article.interface";
+import {CommentService} from "../../../../services/comment.service";
+import {CommentRequestInterface} from "../../../../interfaces/comment.interface";
 
 @Component({
   selector: 'app-detail-article',
@@ -18,6 +21,7 @@ export class DetailArticleComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private articleService = inject(ArticleService);
+  private commentService = inject(CommentService);
 
   constructor() {
     this.activatedRoute.params.subscribe((params) => {
@@ -32,18 +36,19 @@ export class DetailArticleComponent {
     });
   }
 
-  article = computed(() =>
+  article = computed<ArticleInterface | undefined>(() =>
     this.articleService.articlesResource.value()?.find(({ id }) => id === this.articleId()));
 
+  onCommentSubmitted(commentContent: string) {
+    const commentForm: CommentRequestInterface = {
+      articleId: this.articleId(),
+      content: commentContent
+    }
+    this.commentService.createComment(commentForm).then(() => this.articleService.articlesResource.reload());
+  }
 
   back() {
     window.history.back();
   }
-
-  onCommentSubmitted(content: string) {
-    console.log('Commentaire :', content);
-  }
-
-
 
 }

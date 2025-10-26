@@ -1,3 +1,5 @@
+import {CommentInterface} from "./comment.interface";
+
 export interface ArticleInterface {
   id: number;
   title: string;
@@ -7,9 +9,12 @@ export interface ArticleInterface {
   author: {
     username: string;
   };
-  comments?: Array<{
-    content: string;
-    createdAt: Date;
-    author: string;
-  }>;
+  comments: CommentInterface[];
+}
+
+
+export interface ArticleRequestInterface {
+  themeId: number;
+  title: string;
+  content: string;
 }

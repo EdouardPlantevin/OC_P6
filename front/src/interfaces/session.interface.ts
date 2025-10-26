@@ -1,4 +1,4 @@
-export interface SessionInformationInterface {
+export interface SessionInterface {
   token: string;
   type: string;
   id: number;

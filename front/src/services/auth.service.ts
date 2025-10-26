@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {LoginRequestInterface} from "../interfaces/login-request.interface";
-import {SessionInformationInterface} from "../interfaces/session-information.interface";
-import {RegisterRequestInterface} from "../interfaces/register-request.interface";
+import {LoginRequestInterface} from "../interfaces/auth.interface";
+import {SessionInterface} from "../interfaces/session.interface";
+import {RegisterRequestInterface} from "../interfaces/auth.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class AuthService {
 
   private pathAuth = '/api/auth';
 
-  public async login(loginRequestInterface: LoginRequestInterface): Promise<SessionInformationInterface> {
+  public async login(loginRequestInterface: LoginRequestInterface): Promise<SessionInterface> {
     const response = await fetch(`${this.pathAuth}/login`, {
       method: 'POST',
       body: JSON.stringify(loginRequestInterface),
@@ -28,7 +28,7 @@ export class AuthService {
     }
 
     const body = await response.json();
-    return body as SessionInformationInterface;
+    return body as SessionInterface;
   }
 
   public async register(registerRequestInterface: RegisterRequestInterface): Promise<void> {

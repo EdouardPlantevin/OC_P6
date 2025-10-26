@@ -2,7 +2,6 @@ package com.openclassrooms.mddapi.controller;
 
 
 import com.openclassrooms.mddapi.model.SubscriptionRequest;
-import com.openclassrooms.mddapi.model.ThemeDto;
 import com.openclassrooms.mddapi.model.ThemeResponse;
 import com.openclassrooms.mddapi.service.ThemeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +33,7 @@ public class ThemeController {
         return themeService.findAll(jwt);
     }
 
-    @PostMapping()
+    @PostMapping("/toggle-subscription")
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public ResponseEntity<Void> toggleSubscription(
             @Valid @RequestBody SubscriptionRequest request,

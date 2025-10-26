@@ -3,14 +3,11 @@ package com.openclassrooms.mddapi.model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record ArticleToCreate(
+public record CommentToCreate(
+        @NotBlank
+        String content,
+
         @NotNull
-        Long themeId,
-
-        @NotBlank
-        String title,
-
-        @NotBlank
-        String content
+        Long articleId
 ) {
 }

@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from "../../../services/auth.service";
-import {RegisterRequestInterface} from "../../../interfaces/register-request.interface";
+import {RegisterRequestInterface} from "../../../interfaces/auth.interface";
 import {Router} from "@angular/router";
 
 @Component({
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]]
     });
   }
 
@@ -39,6 +39,9 @@ export class RegisterComponent implements OnInit {
     }
     if (field?.hasError('email')) {
       return 'Format d\'email invalide';
+    }
+    if (field?.hasError('pattern') && fieldName === 'password') {
+      return 'Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un caractère spécial';
     }
     return '';
   }

@@ -21,15 +21,15 @@
 
     <h4 class="mt-40">Commentaires</h4>
 
-<!--    @if (articleData.comments && articleData.comments.length > 0) {-->
-<!--      <div class="p-20 flex flex-col gap-16">-->
-<!--        @for (comment of articleData.comments; track $index) {-->
-<!--          <app-comment [comment]="comment"/>-->
-<!--        }-->
-<!--      </div>-->
-<!--    } @else {-->
-<!--      <p class="p-20">Aucun commentaire pour le moment. Soyez le premier à commenter !</p>-->
-<!--    }-->
+    @if (articleData.comments && articleData.comments.length > 0) {
+      <div class="p-20 flex flex-col gap-16">
+        @for (comment of articleData.comments; track $index) {
+          <app-comment [comment]="comment"/>
+        }
+      </div>
+    } @else {
+      <p class="p-20">Aucun commentaire pour le moment. Soyez le premier à commenter !</p>
+    }
 
 
     <app-comment-form (commentSubmitted)="onCommentSubmitted($event)" />

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, httpResource, HttpResourceRef} from "@angular/common/http";
-import {ArticleInterface} from "../interfaces/article.interface";
-import {map} from 'rxjs/operators';
-import {firstValueFrom, Observable} from "rxjs";
-import {ArticleRequestInterface} from "../interfaces/article-request.interface";
+import {ArticleInterface, ArticleRequestInterface} from "../interfaces/article.interface";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +19,4 @@ export class ArticleService {
     await firstValueFrom(this.httpClient.post<void>(this.pathArticle, articleForm));
     this.articlesResource.reload();
   }
-
-
 }
