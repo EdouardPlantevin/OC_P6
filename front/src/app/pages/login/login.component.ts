@@ -3,9 +3,9 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SessionService } from '../../../services/session.service';
-import {LoginRequestInterface} from "../../../interfaces/login-request.interface";
+import {LoginRequestInterface} from "../../../interfaces/auth.interface";
 import {AuthService} from "../../../services/auth.service";
-import {SessionInformationInterface} from "../../../interfaces/session-information.interface";
+import {SessionInterface} from "../../../interfaces/session.interface";
 
 @Component({
   selector: 'app-login',
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
 
       try {
           const loginRequest = this.loginForm.value as LoginRequestInterface;
-          const sessionInformation: SessionInformationInterface = await this.authService.login(loginRequest);
+          const sessionInformation: SessionInterface = await this.authService.login(loginRequest);
           this.sessionService.logIn(sessionInformation);
           await this.router.navigateByUrl('/articles');
       } catch (error: any) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {RegisterRequestInterface} from "../interfaces/register-request.interface";
+import {RegisterRequestInterface} from "../interfaces/auth.interface";
 
 @Injectable({
   providedIn: 'root'

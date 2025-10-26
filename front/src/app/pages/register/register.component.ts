@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from "../../../services/auth.service";
-import {RegisterRequestInterface} from "../../../interfaces/register-request.interface";
+import {RegisterRequestInterface} from "../../../interfaces/auth.interface";
 import {Router} from "@angular/router";
 
 @Component({

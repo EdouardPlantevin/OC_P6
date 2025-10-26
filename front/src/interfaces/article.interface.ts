@@ -11,3 +11,10 @@ export interface ArticleInterface {
   };
   comments: CommentInterface[];
 }
+
+
+export interface ArticleRequestInterface {
+  themeId: number;
+  title: string;
+  content: string;
+}

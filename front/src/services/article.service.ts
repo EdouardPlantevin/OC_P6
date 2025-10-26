@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, httpResource, HttpResourceRef} from "@angular/common/http";
-import {ArticleInterface} from "../interfaces/article.interface";
+import {ArticleInterface, ArticleRequestInterface} from "../interfaces/article.interface";
 import {firstValueFrom} from "rxjs";
-import {ArticleRequestInterface} from "../interfaces/article-request.interface";
 
 @Injectable({
   providedIn: 'root'

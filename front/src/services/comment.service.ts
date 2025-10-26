@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {CommentRequestInterface} from "../interfaces/comment-request.interface";
+import {CommentRequestInterface} from "../interfaces/comment.interface";
 
 @Injectable({
   providedIn: 'root'

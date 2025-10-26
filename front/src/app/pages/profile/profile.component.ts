@@ -3,12 +3,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatButton } from "@angular/material/button";
 import { CardThemeComponent } from "../../components/card-theme/card-theme.component";
-import { ThemeInterface } from "../../../interfaces/theme.interface";
-import {subscribeOn} from "rxjs";
 import {ThemeService} from "../../../services/theme.service";
-import {RegisterRequestInterface} from "../../../interfaces/register-request.interface";
+import {RegisterRequestInterface} from "../../../interfaces/auth.interface";
 import {UserService} from "../../../services/user.service";
-import {AuthService} from "../../../services/auth.service";
 import {SessionService} from "../../../services/session.service";
 
 @Component({

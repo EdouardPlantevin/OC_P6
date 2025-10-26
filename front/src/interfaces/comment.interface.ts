@@ -3,3 +3,8 @@ export interface CommentInterface {
   createdAt: Date;
   author: string;
 }
+
+export interface CommentRequestInterface {
+  content: string;
+  articleId: number;
+}

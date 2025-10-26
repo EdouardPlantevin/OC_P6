@@ -5,8 +5,8 @@ import {DatePipe} from "@angular/common";
 import {CommentComponent} from "../../../components/article/comment/comment.component";
 import {CommentFormComponent} from "../../../components/article/comment-form/comment-form.component";
 import {ArticleInterface} from "../../../../interfaces/article.interface";
-import {CommentRequestInterface} from "../../../../interfaces/comment-request.interface";
 import {CommentService} from "../../../../services/comment.service";
+import {CommentRequestInterface} from "../../../../interfaces/comment.interface";
 
 @Component({
   selector: 'app-detail-article',
