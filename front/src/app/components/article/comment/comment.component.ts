@@ -1,4 +1,5 @@
 import {Component, input} from '@angular/core';
+import {CommentInterface} from "../../../../interfaces/comment.interface";
 
 @Component({
   selector: 'app-comment',
@@ -8,5 +9,5 @@ import {Component, input} from '@angular/core';
   styleUrl: './comment.component.scss'
 })
 export class CommentComponent {
-  comment = input.required<{username: string, content: string}>();
+  comment = input.required<CommentInterface>();
 }

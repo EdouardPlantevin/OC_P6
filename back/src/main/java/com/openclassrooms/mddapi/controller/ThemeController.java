@@ -34,7 +34,7 @@ public class ThemeController {
         return themeService.findAll(jwt);
     }
 
-    @PostMapping()
+    @PostMapping("/toggle-subscription")
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public ResponseEntity<Void> toggleSubscription(
             @Valid @RequestBody SubscriptionRequest request,
