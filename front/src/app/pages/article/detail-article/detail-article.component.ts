@@ -1,7 +1,6 @@
-import {Component, computed, inject, Signal} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, computed, inject, signal} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ArticleService } from '../../../../services/article.service';
-import {ArticleInterface} from "../../../../interfaces/article.interface";
 import {DatePipe} from "@angular/common";
 import {CommentComponent} from "../../../components/article/comment/comment.component";
 import {CommentFormComponent} from "../../../components/article/comment-form/comment-form.component";
@@ -14,12 +13,28 @@ import {CommentFormComponent} from "../../../components/article/comment-form/com
   styleUrl: './detail-article.component.scss'
 })
 export class DetailArticleComponent {
-  private route = inject(ActivatedRoute);
+
+  articleId = signal<number>(0);
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
   private articleService = inject(ArticleService);
 
-  article: Signal<ArticleInterface | null> = computed<ArticleInterface | null>(() => {
-    return this.articleService.getArticleBySlug(this.route.snapshot.paramMap.get('slug') ?? '') ?? null;
-  });
+  constructor() {
+    this.activatedRoute.params.subscribe((params) => {
+      const idParam = params['id'];
+      const id = +idParam;
+
+      if (!isNaN(id)) {
+        this.articleId.set(id);
+      } else {
+        this.router.navigateByUrl('/articles');
+      }
+    });
+  }
+
+  article = computed(() =>
+    this.articleService.articlesResource.value()?.find(({ id }) => id === this.articleId()));
+
 
   back() {
     window.history.back();
@@ -28,4 +43,7 @@ export class DetailArticleComponent {
   onCommentSubmitted(content: string) {
     console.log('Commentaire :', content);
   }
+
+
+
 }

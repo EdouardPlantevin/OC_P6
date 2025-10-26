@@ -7,11 +7,9 @@
     <div class="form-group">
       <select formControlName="theme" [class.error]="theme?.invalid && theme?.touched">
         <option value="">Sélectionner un thème</option>
-        <option value="Tech">Tech</option>
-        <option value="Cuisine">Cuisine</option>
-        <option value="Css">CSS</option>
-        <option value="Environnement">Environnement</option>
-        <option value="Société">Société</option>
+        @for (themeOption of themes(); track themeOption.id) {
+          <option [value]="themeOption.id">{{ themeOption.title }}</option>
+        }
       </select>
 
       @if (theme?.invalid && theme?.touched) {

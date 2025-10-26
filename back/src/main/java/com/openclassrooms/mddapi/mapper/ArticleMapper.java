@@ -18,7 +18,7 @@ public class ArticleMapper {
                 article.getId(),
                 article.getTitle(),
                 article.getCreatedAt(),
-                appUserMapper.toDto(article.getAuthor()),
+                article.getAuthor().getUsername(),
                 article.getContent(),
                 article.getTheme().getTitle(),
                 article.getComments().stream()
