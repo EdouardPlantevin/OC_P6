@@ -3,6 +3,8 @@ package com.openclassrooms.mddapi.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Theme {
@@ -17,5 +19,8 @@ public class Theme {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "theme", fetch = FetchType.LAZY)
+    private List<Article> articles;
 
 }
