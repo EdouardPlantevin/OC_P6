@@ -11,6 +11,7 @@ public class ArticleMapper {
 
     private final ThemeMapper themeMapper;
     private final AppUserMapper appUserMapper;
+    private final CommentMapper commentMapper;
 
     public ArticleDto toDto(Article article) {
         return new ArticleDto(
@@ -19,7 +20,10 @@ public class ArticleMapper {
                 article.getCreatedAt(),
                 article.getAuthor().getUsername(),
                 article.getContent(),
-                article.getTheme().getTitle()
+                article.getTheme().getTitle(),
+                article.getComments().stream()
+                        .map(commentMapper::toDto)
+                        .toList()
         );
     }
 }

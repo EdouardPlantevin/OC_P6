@@ -32,12 +32,6 @@ public class ArticleController {
         return articleService.findAll();
     }
 
-    @GetMapping("/{id}")
-    @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
-    public ArticleDto findById(@PathVariable Long id) {
-        return articleService.findById(id);
-    }
-
 
     @PostMapping
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
