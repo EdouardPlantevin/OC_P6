@@ -34,9 +34,13 @@ export class ProfileComponent {
   isSubmitting = false;
 
   constructor() {
+    const sessionData = this.sessionService.currentUser();
+    const currentUsername = sessionData?.username || '';
+    const currentEmail = sessionData?.email || '';
+
     this.profileForm = this.fb.group({
-      username: ['username', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      email: ['email@test.com', [Validators.required, Validators.email]],
+      username: [currentUsername, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      email: [currentEmail, [Validators.required, Validators.email]],
       password: ['', [Validators.minLength(6)]]
     });
   }
