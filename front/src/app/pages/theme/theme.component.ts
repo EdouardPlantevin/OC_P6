@@ -1,6 +1,4 @@
-import {Component, computed, effect, inject} from '@angular/core';
-import {HeaderComponent} from "../../components/header/header.component";
-import {ThemeInterface} from "../../../interfaces/theme.interface";
+import {Component, computed, inject} from '@angular/core';
 import {CardThemeComponent} from "../../components/card-theme/card-theme.component";
 import {ThemeService} from "../../../services/theme.service";
 
@@ -18,7 +16,7 @@ export class ThemeComponent {
 
   themes = computed(() => this.themeService.themesResource.value());
 
-  toggleSubscribe(id: number, action: boolean) {
-    console.log("Change theme id " + id + " subscribe to " + action)
+  async subscribe(id: number) {
+    await this.themeService.toggleSubscription(id);
   }
 }

@@ -78,8 +78,8 @@
   <h2>Abonnements</h2>
 
   <div class="themes-wrapper">
-    @for (theme of mockThemes; track theme.id) {
-      <app-card-theme [theme]="theme" (toggleSubscribe)="toggleSubscribe(theme.id, $event)"></app-card-theme>
+    @for (theme of themesSubscribe(); track theme.id) {
+      <app-card-theme [theme]="theme" (subscribe)="unsubscribe(theme.id)" [canUnsubscribe]="true"></app-card-theme>
     }
   </div>
 

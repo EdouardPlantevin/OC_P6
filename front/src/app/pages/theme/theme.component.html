@@ -1,6 +1,7 @@
 
 <div class="themes-wrapper">
   @for (theme of themes(); track theme.id) {
-    <app-card-theme [theme]="theme" (toggleSubscribe)="toggleSubscribe(theme.id, $event)"></app-card-theme>
+    <app-card-theme [theme]="theme" (subscribe)="subscribe(theme.id)"></app-card-theme>
   }
+
 </div>
