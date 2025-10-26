@@ -6,6 +6,10 @@ import { CardThemeComponent } from "../../components/card-theme/card-theme.compo
 import { ThemeInterface } from "../../../interfaces/theme.interface";
 import {subscribeOn} from "rxjs";
 import {ThemeService} from "../../../services/theme.service";
+import {RegisterRequestInterface} from "../../../interfaces/register-request.interface";
+import {UserService} from "../../../services/user.service";
+import {AuthService} from "../../../services/auth.service";
+import {SessionService} from "../../../services/session.service";
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +25,10 @@ import {ThemeService} from "../../../services/theme.service";
 export class ProfileComponent {
   private fb = inject(FormBuilder);
   private themeService = inject(ThemeService);
+  private userService = inject(UserService);
+  private sessionService = inject(SessionService);
 
   themesSubscribe = this.themeService.themesSubscribe;
-
-  profileUpdated = output<{ username: string; email: string; password?: string }>();
 
   profileForm: FormGroup;
   isSubmitting = false;
@@ -41,16 +45,16 @@ export class ProfileComponent {
     if (this.profileForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
 
-      const profileData = {
+      const profileData: RegisterRequestInterface = {
         username: this.profileForm.value.username,
         email: this.profileForm.value.email,
         password: this.profileForm.value.password || undefined
-      };
+      }
 
-      this.profileUpdated.emit(profileData);
-
-      this.profileForm.patchValue({ password: '' });
-      this.isSubmitting = false;
+      this.userService.updateUser(profileData).then(()=> {
+        this.isSubmitting = false
+        this.sessionService.logOut();
+      });
     } else {
       this.markFormGroupTouched();
     }

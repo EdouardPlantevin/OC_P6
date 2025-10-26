@@ -2,9 +2,8 @@ package com.openclassrooms.mddapi.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
-public record UserRegister(
+public record UserToUpdate(
         @NotBlank()
         String username,
 
@@ -12,8 +11,6 @@ public record UserRegister(
         @NotBlank()
         String email,
 
-        @NotBlank()
-        @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$")
         String password
 ) {
 }

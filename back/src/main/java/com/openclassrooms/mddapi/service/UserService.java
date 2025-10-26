@@ -5,6 +5,7 @@ import com.openclassrooms.mddapi.mapper.AppUserMapper;
 import com.openclassrooms.mddapi.model.LoginResponse;
 import com.openclassrooms.mddapi.model.UserCredentials;
 import com.openclassrooms.mddapi.model.UserRegister;
+import com.openclassrooms.mddapi.model.UserToUpdate;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.security.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
@@ -72,6 +74,29 @@ public class UserService {
                 userDto.username()
         );
     }
+
+    public void updateUser(UserToUpdate userToUpdate, Jwt jwt) {
+        AppUser appUser = userRepository.findByUsername(jwt.getSubject())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
+
+        appUser.setEmail(userToUpdate.email());
+        appUser.setUsername(userToUpdate.username());
+
+        String newPassword = userToUpdate.password();
+
+        if (newPassword != null && !newPassword.isBlank()) {
+            String passwordPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$";
+
+            if (!newPassword.matches(passwordPattern)) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+
+            appUser.setPassword(passwordEncoder.encode(newPassword));
+        }
+
+        userRepository.save(appUser);
+    }
+
 
     private boolean isLoginExists(String login) {
         Optional<AppUser> user = userRepository.findByLogin(login);
