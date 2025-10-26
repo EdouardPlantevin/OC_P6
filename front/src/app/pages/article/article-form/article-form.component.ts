@@ -1,7 +1,10 @@
-import { Component, inject, output } from '@angular/core';
+import {Component, computed, inject, output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButton } from "@angular/material/button";
+import {ArticleService} from "../../../../services/article.service";
+import {Router} from "@angular/router";
+import {ThemeService} from "../../../../services/theme.service";
 
 @Component({
   selector: 'app-article-form',
@@ -15,8 +18,11 @@ import { MatButton } from "@angular/material/button";
 })
 export class ArticleFormComponent {
   private fb = inject(FormBuilder);
+  private articleService = inject(ArticleService);
+  private router = inject(Router);
+  private themeService = inject(ThemeService);
 
-  articleSubmitted = output<{ title: string; content: string; theme: string }>();
+  themes = computed(() => this.themeService.themesResource.value());
 
   articleForm: FormGroup;
   isSubmitting = false;
@@ -25,7 +31,7 @@ export class ArticleFormComponent {
     this.articleForm = this.fb.group({
       theme: ['', [Validators.required]],
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      content: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2000)]]
+      content: ['', [Validators.required, Validators.minLength(50), Validators.maxLength(2000)]]
     });
   }
 
@@ -34,15 +40,17 @@ export class ArticleFormComponent {
       this.isSubmitting = true;
 
       const articleData = {
-        theme: this.articleForm.value.theme,
+        themeId: Number(this.articleForm.value.theme),
         title: this.articleForm.value.title,
         content: this.articleForm.value.content
       };
 
-      this.articleSubmitted.emit(articleData);
+      this.articleService.createArticle(articleData).then(() => {
+        this.articleForm.reset();
+        this.isSubmitting = false;
+        this.router.navigate(['/articles']);
+      });
 
-      this.articleForm.reset();
-      this.isSubmitting = false;
     } else {
       this.markFormGroupTouched();
     }

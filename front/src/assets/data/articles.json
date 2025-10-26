@@ -2,7 +2,6 @@
   {
     "id": 1,
     "title": "L'impact de l'intelligence artificielle sur le monde du travail",
-    "slug": "limpact-de-lintelligence-artificielle-sur-le-monde-du-travail",
     "description": "Une analyse approfondie des transformations économiques et sociales causées par l'intégration de l'IA dans les entreprises modernes.",
     "date": "2025-10-15T10:30:00Z",
     "theme": "Technologie",
@@ -25,7 +24,6 @@
   {
     "id": 2,
     "title": "Les tendances écologiques en 2025",
-    "slug": "les-tendances-ecologiques-en-2025",
     "description": "Un aperçu des innovations vertes et des nouvelles politiques environnementales mises en œuvre à travers le monde.",
     "date": "2025-09-30T14:45:00Z",
     "theme": "Environnement",
@@ -48,7 +46,6 @@
   {
     "id": 3,
     "title": "Comment le télétravail redéfinit la culture d’entreprise",
-    "slug": "comment-le-teletravail-redefinit-la-culture-dentreprise",
     "description": "Cet article explore les impacts du travail à distance sur la collaboration, la productivité et le bien-être des employés.",
     "date": "2025-08-20T09:00:00Z",
     "theme": "Société",

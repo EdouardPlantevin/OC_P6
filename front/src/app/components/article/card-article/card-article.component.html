@@ -4,11 +4,11 @@
   <h2>{{ articleValue.title }}</h2>
 
   <div class="flex gap-12">
-    <p>{{ articleValue.date | date }}</p>
+    <p>{{ articleValue.createdAt | date }}</p>
     <p>{{ articleValue.author }}</p>
   </div>
 
   <p class="mt-10">
-    {{ articleValue.description }}
+    {{ articleValue.content }}
   </p>
 </div>

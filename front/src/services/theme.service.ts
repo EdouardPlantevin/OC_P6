@@ -5,12 +5,12 @@ import { ThemeInterface } from '../interfaces/theme.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private pathAuth = '/api/themes';
+  private pathTheme = '/api/themes';
 
   private http = inject(HttpClient);
 
   readonly themesResource: HttpResourceRef<ThemeInterface[] | undefined> =
-    httpResource<ThemeInterface[]>(() => this.pathAuth);
+    httpResource<ThemeInterface[]>(() => this.pathTheme);
 
   public themesSubscribe = computed(() => {
     const themes = this.themesResource.value()
@@ -18,7 +18,7 @@ export class ThemeService {
   });
 
   public async toggleSubscription(id: number): Promise<void> {
-    await firstValueFrom(this.http.post<void>(this.pathAuth, { themeId: Number(id) }));
+    await firstValueFrom(this.http.post<void>(this.pathTheme, { themeId: Number(id) }));
     this.themesResource.reload();
   }
 }

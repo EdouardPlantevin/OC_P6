@@ -1,6 +1,6 @@
 
 
-@if (article() !== null) {
+@if (article() !== undefined) {
   @let articleData = article()!;
   <div>
       <div class="hero-top">
@@ -8,24 +8,30 @@
         <h2>{{ articleData.title }}</h2>
       </div>
     <div class="flex gap-16">
-      <p>{{ articleData.date | date }}</p>
+      <p>{{ articleData.createdAt | date }}</p>
       <p>{{ articleData.author }}</p>
       <p>{{ articleData.theme }}</p>
     </div>
 
     <div class="my-20">
-      <p>Content: {{ articleData.description }}</p>
+      <p>Content: {{ articleData.content }}</p>
     </div>
 
     <hr>
 
     <h4 class="mt-40">Commentaires</h4>
 
-    <div class="p-20 flex flex-col gap-16">
-      @for (comment of articleData.comments; track $index) {
-        <app-comment [comment]="comment"/>
-      }
-    </div>
+<!--    @if (articleData.comments && articleData.comments.length > 0) {-->
+<!--      <div class="p-20 flex flex-col gap-16">-->
+<!--        @for (comment of articleData.comments; track $index) {-->
+<!--          <app-comment [comment]="comment"/>-->
+<!--        }-->
+<!--      </div>-->
+<!--    } @else {-->
+<!--      <p class="p-20">Aucun commentaire pour le moment. Soyez le premier à commenter !</p>-->
+<!--    }-->
+
+
     <app-comment-form (commentSubmitted)="onCommentSubmitted($event)" />
   </div>
 

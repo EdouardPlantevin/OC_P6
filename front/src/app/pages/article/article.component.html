@@ -10,7 +10,7 @@
 
 <div class="articles-wrapper">
   @for (article of articles(); track article.id) {
-    <a routerLink="/articles/{{ article.slug }}" [state]="{ article }">
+    <a routerLink="/articles/{{ article.id }}" [state]="{ article }">
       <app-card-article [article]="article" />
     </a>
   }

@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
-import {httpResource, HttpResourceRef} from "@angular/common/http";
+import {HttpClient, httpResource, HttpResourceRef} from "@angular/common/http";
 import {ArticleInterface} from "../interfaces/article.interface";
 import {map} from 'rxjs/operators';
+import {firstValueFrom, Observable} from "rxjs";
+import {ArticleRequestInterface} from "../interfaces/article-request.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  readonly articlesResource: HttpResourceRef<ArticleInterface[] | undefined> =
-    httpResource<ArticleInterface[]>(() => 'assets/data/articles.json');
+  private pathArticle = '/api/articles';
 
-  getArticleBySlug(slug: string) {
-    if (this.articlesResource.value === undefined) {
-      return null;
-    }
-    return this.articlesResource.value()?.map(article => article.slug === slug ? article : null).find(article => article !== null);
+  constructor(private httpClient: HttpClient) { }
+
+  readonly articlesResource: HttpResourceRef<ArticleInterface[] | undefined> =
+    httpResource<ArticleInterface[]>(() => this.pathArticle);
+
+  public async createArticle(articleForm: ArticleRequestInterface): Promise<void> {
+    await firstValueFrom(this.httpClient.post<void>(this.pathArticle, articleForm));
+    this.articlesResource.reload();
   }
+
 
 }

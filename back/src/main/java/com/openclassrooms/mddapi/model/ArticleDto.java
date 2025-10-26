@@ -15,7 +15,7 @@ public record ArticleDto(
         Date createdAt,
 
         @NotNull
-        AppUserDto author,
+        String author,
 
         @NotNull
         String content,

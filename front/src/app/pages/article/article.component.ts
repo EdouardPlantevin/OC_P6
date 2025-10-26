@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, computed, effect, inject, signal} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {CardArticleComponent} from "../../components/article/card-article/card-article.component";
 import {ArticleService} from "../../../services/article.service";
@@ -23,8 +23,8 @@ export class ArticleComponent {
     const dataArticles = this.articleService.articlesResource.value() || [];
 
     return dataArticles.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+      const dateA = new Date(a.createdAt).getTime();
+      const dateB = new Date(b.createdAt).getTime();
       return this.isDesc() ? dateB - dateA : dateA - dateB;
     });
   });
