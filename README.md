@@ -1,25 +1,82 @@
-# P6-Full-Stack-reseau-dev
+# P6 - Réseau Social de Développeurs
 
-## Front
+Application full-stack de réseau social pour développeurs développée avec Spring Boot (back-end) et Angular (front-end).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+## 📋 Prérequis
 
-Don't forget to install your node_modules before starting (`npm install`).
+- **Java 17**
+- **Node.js 14+** et **npm**
+- **MySQL 8.0+**
+- **Git**
 
-### Development server
+## 🚀 Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. Configuration du Back-end
 
-### Build
+```bash
+cd back
+cp env.example .env
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Éditez le fichier `.env` avec vos paramètres MySQL et générez une clé JWT :
 
-### Where to start
+```bash
+openssl rand -base64 64
+```
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+Exemple de `.env` :
+```env
+DB_URL=jdbc:mysql://localhost:3306/mdd_db?createDatabaseIfNotExist=true
+DB_USERNAME=root
+DB_PASSWORD=votre_mot_de_passe
+JWT_SECOND=86400
+JWT_BASE64_SECRET=votre_clé_générée
+```
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+### 2. Démarrer le Back-end
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get rid of it.
+```bash
+./mvnw spring-boot:run
+```
 
-Good luck!
+Le serveur démarre sur `http://localhost:8080`. La base de données et les tables sont créées automatiquement par Hibernate.
+
+### 3. Initialiser un utilisateur de test
+
+Dans un nouveau terminal :
+
+```bash
+mysql -u root -p mdd_db < back/src/main/resources/init.sql
+```
+
+Cet utilisateur de test est créé :
+- Email : `test@example.com`
+- Mot de passe : `password123`
+- Username : `user_test`
+
+### 4. Démarrer le Front-end
+
+Dans un nouveau terminal :
+
+```bash
+cd front
+npm install
+npm start
+```
+
+L'application est accessible sur `http://localhost:4200`
+
+## 🎯 Accès
+
+- **Front-end** : http://localhost:4200
+- **Back-end** : http://localhost:8080
+- **Swagger UI** : http://localhost:8080/swagger-ui/index.html
+- **Compte test** : test@example.com / password123
+
+
+
+
+## 📚 Technologies
+
+- **Back-end** : Spring Boot 3.5.6, Java 17, Spring Security, JWT, JPA/Hibernate, MySQL
+- **Front-end** : Angular 20, Angular Material, TypeScript
