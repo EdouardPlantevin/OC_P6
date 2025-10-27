@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Entity representing a user in the application.
+ * Contains user authentication and profile information.
+ */
 @Entity
 @Data
 public class AppUser {

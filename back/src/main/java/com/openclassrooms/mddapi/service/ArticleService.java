@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Service class for managing article operations.
+ * Handles article creation, retrieval, and mapping operations.
+ */
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
@@ -39,6 +43,13 @@ public class ArticleService {
                 .toList();
     }
 
+    /**
+     * Finds an article by its ID and converts it to an ArticleDto.
+     *
+     * @param id the ID of the article to find
+     * @return the corresponding ArticleDto
+     * @throws EntityNotFoundException if the article is not found
+     */
     public ArticleDto findById(Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Article non trouvé: id= " + id));

@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST controller for handling comment-related operations.
+ * Manages comment creation with authentication.
+ */
 @Tag(name = "Comments")
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +27,12 @@ public class CommentController {
 
     private final CommentService commentService;
 
+    /**
+     * Creates a new comment on an article.
+     *
+     * @param commentToCreate the comment data to create
+     * @param jwt the authentication token of the current user
+     */
     @PostMapping()
     public void createComment(
             @Valid @RequestBody CommentToCreate commentToCreate,

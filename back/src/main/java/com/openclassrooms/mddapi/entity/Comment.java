@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * Entity representing a comment on an article.
+ * Comments are created by users and associated with an article.
+ */
 @Entity
 @Data
 public class Comment {

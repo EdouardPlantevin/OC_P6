@@ -3,7 +3,6 @@ package com.openclassrooms.mddapi.service;
 import com.openclassrooms.mddapi.entity.AppUser;
 import com.openclassrooms.mddapi.entity.Theme;
 import com.openclassrooms.mddapi.mapper.ThemeMapper;
-import com.openclassrooms.mddapi.model.ThemeDto;
 import com.openclassrooms.mddapi.model.ThemeResponse;
 import com.openclassrooms.mddapi.repository.ThemeRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;

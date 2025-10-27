@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Entity representing a theme or category.
+ * Themes can be subscribed to by users and contain articles.
+ */
 @Entity
 @Data
 public class Theme {

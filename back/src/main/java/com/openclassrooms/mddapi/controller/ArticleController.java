@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller for handling article-related operations.
+ * Manages article creation and retrieval with authentication.
+ */
 @Tag(name = "Articles")
 @RestController
 @RequiredArgsConstructor
@@ -26,12 +30,24 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
+    /**
+     * Retrieves all articles from the database.
+     *
+     * @return List of all articles as DTOs
+     */
     @GetMapping()
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public List<ArticleDto> findAll() {
         return articleService.findAll();
     }
 
+    /**
+     * Creates a new article associated with a specific theme.
+     *
+     * @param articleToCreate the article data to create
+     * @param jwt the authentication token of the current user
+     * @return ResponseEntity indicating successful creation
+     */
     @PostMapping
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public ResponseEntity<Void> createArticle(
