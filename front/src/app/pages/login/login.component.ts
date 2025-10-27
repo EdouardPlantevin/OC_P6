@@ -90,6 +90,6 @@ export class LoginComponent implements OnInit {
   }
 
   back() {
-    window.history.back();
+    this.router.navigateByUrl('/');
   }
 }
