@@ -5,13 +5,15 @@ import { MatButton } from "@angular/material/button";
 import {ArticleService} from "../../../../services/article.service";
 import {Router} from "@angular/router";
 import {ThemeService} from "../../../../services/theme.service";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-article-form',
   imports: [
     MatButton,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss'

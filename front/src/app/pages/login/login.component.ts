@@ -6,12 +6,14 @@ import { SessionService } from '../../../services/session.service';
 import {LoginRequestInterface} from "../../../interfaces/auth.interface";
 import {AuthService} from "../../../services/auth.service";
 import {SessionInterface} from "../../../interfaces/session.interface";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   imports: [
     MatButton,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
