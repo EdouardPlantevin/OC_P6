@@ -41,18 +41,18 @@ JWT_BASE64_SECRET=votre_clé_générée
 
 Le serveur démarre sur `http://localhost:8080`. La base de données et les tables sont créées automatiquement par Hibernate.
 
-### 3. Initialiser un utilisateur de test
+### 3. Initialiser les données de tests
 
 Dans un nouveau terminal :
 
 ```bash
-mysql -u root -p mdd_db < back/src/main/resources/init.sql
+mysql -u root -p mdd_db < back/src/main/resources/fixture.sql
 ```
 
 Cet utilisateur de test est créé :
-- Email : `test@example.com`
-- Mot de passe : `password123`
-- Username : `user_test`
+- Email : `test@test.com`
+- Mot de passe : `password`
+- Username : `Jean-Baptiste`
 
 ### 4. Démarrer le Front-end
 
