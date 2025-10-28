@@ -71,7 +71,7 @@ L'application est accessible sur `http://localhost:4200`
 - **Front-end** : http://localhost:4200
 - **Back-end** : http://localhost:8080
 - **Swagger UI** : http://localhost:8080/swagger-ui/index.html
-- **Compte test** : test@example.com / password123
+- **Compte test** : test@test.com / password
 
 
 
