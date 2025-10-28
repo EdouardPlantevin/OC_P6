@@ -6,6 +6,10 @@ import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Entity representing an article in the application.
+ * Articles are created by users and associated with a theme.
+ */
 @Entity
 @Data
 public class Article {

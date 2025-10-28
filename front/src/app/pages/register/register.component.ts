@@ -4,13 +4,15 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import {AuthService} from "../../../services/auth.service";
 import {RegisterRequestInterface} from "../../../interfaces/auth.interface";
 import {Router} from "@angular/router";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
-    imports: [
-        MatButton,
-        ReactiveFormsModule
-    ],
+  imports: [
+    MatButton,
+    ReactiveFormsModule,
+    MatIconModule
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

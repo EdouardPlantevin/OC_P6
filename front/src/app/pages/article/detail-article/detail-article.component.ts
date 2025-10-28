@@ -7,11 +7,12 @@ import {CommentFormComponent} from "../../../components/article/comment-form/com
 import {ArticleInterface} from "../../../../interfaces/article.interface";
 import {CommentService} from "../../../../services/comment.service";
 import {CommentRequestInterface} from "../../../../interfaces/comment.interface";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-detail-article',
   standalone: true,
-  imports: [DatePipe, CommentComponent, CommentFormComponent],
+  imports: [DatePipe, CommentComponent, CommentFormComponent, MatIconModule],
   templateUrl: './detail-article.component.html',
   styleUrl: './detail-article.component.scss'
 })

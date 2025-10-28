@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST controller for handling user profile operations.
+ * Manages user profile updates with authentication.
+ */
 @Tag(name = "Users")
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +26,12 @@ public class UserController {
 
     private final UserService userService;
 
+    /**
+     * Updates the profile of the authenticated user.
+     *
+     * @param userToUpdate the updated user data
+     * @param jwt the authentication token of the current user
+     */
     @PutMapping("/update")
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
     public void update(

@@ -10,6 +10,12 @@ export class AuthService {
 
   private pathAuth = '/api/auth';
 
+  /**
+   * Logs in a user with provided credentials.
+   * @param loginRequestInterface User login credentials
+   * @returns Promise with session data including JWT token
+   * @throws Error if login fails with status code
+   */
   public async login(loginRequestInterface: LoginRequestInterface): Promise<SessionInterface> {
     const response = await fetch(`${this.pathAuth}/login`, {
       method: 'POST',
@@ -31,6 +37,12 @@ export class AuthService {
     return body as SessionInterface;
   }
 
+  /**
+   * Registers a new user in the system.
+   * @param registerRequestInterface User registration data
+   * @returns Promise that resolves when registration is successful
+   * @throws Error if registration fails with status code
+   */
   public async register(registerRequestInterface: RegisterRequestInterface): Promise<void> {
     const response = await fetch(`${this.pathAuth}/register`, {
       method: 'POST',

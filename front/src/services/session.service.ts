@@ -19,6 +19,10 @@ export class SessionService {
     this.checkExistingSession();
   }
 
+  /**
+   * Logs in a user and stores session information.
+   * @param sessionInformationInterface The session information containing user data and token
+   */
   logIn(sessionInformationInterface: SessionInterface): void {
     this._currentUser.set(sessionInformationInterface);
     this._isLoggedIn.set(true);
@@ -27,6 +31,10 @@ export class SessionService {
     localStorage.setItem('isLoggedIn', 'true');
   }
 
+  /**
+   * Logs out the current user and clears session data.
+   * Redirects to the login page.
+   */
   logOut(): void {
     this._currentUser.set(null);
     this._isLoggedIn.set(false);
@@ -37,6 +45,11 @@ export class SessionService {
     this.router.navigateByUrl('/connexion');
   }
 
+  /**
+   * Checks if there is an existing session in localStorage.
+   * Loads user data if found.
+   * @private
+   */
   private checkExistingSession(): void {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const userData = localStorage.getItem('user');

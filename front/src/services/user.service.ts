@@ -11,6 +11,11 @@ export class UserService {
   private pathUser = '/api/users';
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * Updates the profile of the authenticated user.
+   * @param userForm The updated user data
+   * @returns Promise that resolves when the profile is updated
+   */
   public async updateUser(userForm: RegisterRequestInterface): Promise<void> {
     await firstValueFrom(this.httpClient.put<void>(`${this.pathUser}/update`, userForm));
   }

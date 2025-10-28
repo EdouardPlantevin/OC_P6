@@ -1,5 +1,5 @@
 
-<button class="back-btn" (click)="back()">←</button>
+<button class="back-btn" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
 
 <div class="img-wrapper desktop-hide">
   <img src="/assets/logo_p6.png" alt="Logo" class="w-full"/>
@@ -61,10 +61,10 @@
     }
 
     <div class="center-m">
-      <button 
-        type="submit" 
-        class="flex-1 xs-w-full nowrap" 
-        matButton="filled" 
+      <button
+        type="submit"
+        class="flex-1 xs-w-full nowrap"
+        matButton="filled"
         color="primary"
         [disabled]="isLoading"
       >
