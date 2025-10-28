@@ -43,13 +43,13 @@ Le serveur démarre sur `http://localhost:8080`. La base de données et les tabl
 
 ### 3. Initialiser les données de tests
 
-Dans un nouveau terminal :
+Vous trouverez un script de avec des données de test dans: 
 
 ```bash
-mysql -u root -p mdd_db < back/src/main/resources/fixture.sql
+back/src/main/resources/fixture.sql
 ```
 
-Cet utilisateur de test est créé :
+Un utilisateur de test sera créé :
 - Email : `test@test.com`
 - Mot de passe : `password`
 - Username : `Jean-Baptiste`
