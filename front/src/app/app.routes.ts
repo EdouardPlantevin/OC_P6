@@ -25,19 +25,23 @@ export const routes: Routes = [
       loadComponent: async () => (await import('./pages/theme/theme.component')).ThemeComponent
     },
     {
-      path: 'articles/creation',
-      canActivate: [AuthGuard],
-      loadComponent: async () => (await import('./pages/article/article-form/article-form.component')).ArticleFormComponent
-    },
-    {
-      path: 'articles/:id',
-      canActivate: [AuthGuard],
-      loadComponent: async () => (await import('./pages/article/detail-article/detail-article.component')).DetailArticleComponent
-    },
-    {
       path: 'articles',
       canActivate: [AuthGuard],
-      loadComponent: async () => (await import('./pages/article/article.component')).ArticleComponent
+      loadComponent: async () => (await import('./pages/article/articles-layout.component')).ArticlesLayoutComponent,
+      children: [
+        {
+          path: '',
+          loadComponent: async () => (await import('./pages/article/articles/article.component')).ArticleComponent
+        },
+        {
+          path: 'creation',
+          loadComponent: async () => (await import('./pages/article/article-form/article-form.component')).ArticleFormComponent
+        },
+        {
+          path: ':id',
+          loadComponent: async () => (await import('./pages/article/detail-article/detail-article.component')).DetailArticleComponent
+        }
+      ]
     },
     {
       path: '',
