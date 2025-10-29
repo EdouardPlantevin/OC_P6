@@ -4,81 +4,62 @@
   <h2 class="text-center">Créer un nouvel article</h2>
 
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <select formControlName="theme" [class.error]="theme?.invalid && theme?.touched">
-        <option value="">Sélectionner un thème</option>
+    <mat-form-field appearance="outline" class="full-width" hideRequiredMarker="true">
+      <mat-select formControlName="theme" placeholder="Sélectionner un thème">
         @for (themeOption of themes(); track themeOption.id) {
-          <option [value]="themeOption.id">{{ themeOption.title }}</option>
+          <mat-option [value]="themeOption.id">{{ themeOption.title }}</mat-option>
         }
-      </select>
-
+      </mat-select>
       @if (theme?.invalid && theme?.touched) {
-        <div class="error-message">
-          <span>Veuillez sélectionner un thème</span>
-        </div>
+        <mat-error>Veuillez sélectionner un thème</mat-error>
       }
-    </div>
+    </mat-form-field>
 
-    <div class="form-group">
-      <input
-        type="text"
-        formControlName="title"
-        placeholder="Titre de l'article"
-        [class.error]="title?.invalid && title?.touched">
-
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Titre de l'article</mat-label>
+      <input matInput formControlName="title" placeholder="Titre de l'article">
       @if (title?.invalid && title?.touched) {
-        <div class="error-message">
+        <mat-error>
           @if (title?.errors?.['required']) {
-            <span>Le titre est requis</span>
+            Le titre est requis
+          } @else if (title?.errors?.['minlength']) {
+            Le titre doit contenir au moins 5 caractères
+          } @else if (title?.errors?.['maxlength']) {
+            Le titre ne peut pas dépasser 100 caractères
           }
-          @if (title?.errors?.['minlength']) {
-            <span>Le titre doit contenir au moins 5 caractères</span>
-          }
-          @if (title?.errors?.['maxlength']) {
-            <span>Le titre ne peut pas dépasser 100 caractères</span>
-          }
-        </div>
+        </mat-error>
       }
-    </div>
+    </mat-form-field>
 
-    <div class="form-group">
-      <textarea
-        formControlName="content"
-        cols="30"
-        rows="10"
-        placeholder="Contenu de l'article"
-        [class.error]="content?.invalid && content?.touched">
-      </textarea>
-
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contenu de l'article</mat-label>
+      <textarea matInput formControlName="content" rows="10" placeholder="Contenu de l'article"></textarea>
       @if (content?.invalid && content?.touched) {
-        <div class="error-message">
+        <mat-error>
           @if (content?.errors?.['required']) {
-            <span>Le contenu est requis</span>
+            Le contenu est requis
+          } @else if (content?.errors?.['minlength']) {
+            Le contenu doit contenir au moins 50 caractères
+          } @else if (content?.errors?.['maxlength']) {
+            Le contenu ne peut pas dépasser 2000 caractères
           }
-          @if (content?.errors?.['minlength']) {
-            <span>Le contenu doit contenir au moins 50 caractères</span>
-          }
-          @if (content?.errors?.['maxlength']) {
-            <span>Le contenu ne peut pas dépasser 2000 caractères</span>
-          }
-        </div>
+        </mat-error>
       }
+    </mat-form-field>
+
+    <div class="flex justify-content-center">
+      <button
+        type="submit"
+        matButton="filled"
+        color="primary"
+        [disabled]="articleForm.invalid || isSubmitting">
+        @if (isSubmitting) {
+          Création...
+        } @else {
+          Créer
+        }
+      </button>
     </div>
-
-      <div class="flex justify-content-center">
-          <button
-                  type="submit"
-                  matButton="filled"
-                  color="primary"
-                  [disabled]="articleForm.invalid || isSubmitting">
-              @if (isSubmitting) {
-                  Création...
-              } @else {
-                  Créer
-              }
-          </button>
-      </div>
-
   </form>
 </div>
 

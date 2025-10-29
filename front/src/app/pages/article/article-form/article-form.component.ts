@@ -2,6 +2,9 @@ import {Component, computed, inject, output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButton } from "@angular/material/button";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {ArticleService} from "../../../../services/article.service";
 import {Router} from "@angular/router";
 import {ThemeService} from "../../../../services/theme.service";
@@ -13,7 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatButton,
     ReactiveFormsModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss'

@@ -4,14 +4,68 @@
   width: 400px;
   margin: 0 auto;
 
-  input, select, textarea {
-    border: 2px solid var(--primary);
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.full-width {
+  width: 100%;
+
+  ::ng-deep .mdc-text-field--outlined {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: var(--primary);
+      border-width: 2px;
+    }
+  }
+
+  // Bordures au focus
+  ::ng-deep .mdc-text-field--outlined.mdc-text-field--focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #7763C5;
+      border-width: 2px;
+    }
+  }
+
+  ::ng-deep .mdc-text-field--outlined {
+    .mdc-notched-outline__leading {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    .mdc-notched-outline__trailing {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  ::ng-deep .mat-mdc-select-panel {
+    border-radius: 8px;
+  }
+}
+
+::ng-deep .mat-mdc-form-field {
+  .mat-mdc-select-trigger {
+    .mat-mdc-select-placeholder {
+      border-radius: 8px;
+    }
   }
 }
 
 @include mixin.mobile-screen() {
   .container {
+    //width: 90%;
     margin-top: 150px;
+    //padding: 0 20px;
   }
 }
 
