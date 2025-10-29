@@ -19,7 +19,7 @@ import {SessionService} from "../services/session.service";
 })
 export class AppComponent {
   currentUrl = signal<string>('/');
-  isMobile = signal<boolean>(window.innerWidth < 768);
+  isMobile = signal<boolean>(window.innerWidth < 820);
   private sessionService = inject(SessionService)
 
   noHeaderRoutes = ['/'];
@@ -33,7 +33,7 @@ export class AppComponent {
       });
 
     window.addEventListener('resize', () => {
-      this.isMobile.set(window.innerWidth < 768);
+      this.isMobile.set(window.innerWidth < 820);
     });
   }
 
