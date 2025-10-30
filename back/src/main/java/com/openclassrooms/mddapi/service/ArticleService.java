@@ -44,6 +44,29 @@ public class ArticleService {
     }
 
     /**
+     * Retrieves articles linked to the authenticated user's subscribed themes.
+     * Articles are ordered by creation date descending.
+     *
+     * @param jwt the JWT of the authenticated user
+     * @return list of ArticleDto for user's themes
+     */
+    public List<ArticleDto> findAllForUserThemes(Jwt jwt) {
+        AppUser appUser = userRepository.findByUsername(jwt.getSubject())
+                .orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé: login= " + jwt.getSubject()));
+
+        List<Long> themeIds = appUser.getThemes().stream().map(Theme::getId).toList();
+
+        if (themeIds.isEmpty()) {
+            return List.of();
+        }
+
+        return articleRepository.findByTheme_IdInOrderByCreatedAtDesc(themeIds)
+                .stream()
+                .map(articleMapper::toDto)
+                .toList();
+    }
+
+    /**
      * Finds an article by its ID and converts it to an ArticleDto.
      *
      * @param id the ID of the article to find

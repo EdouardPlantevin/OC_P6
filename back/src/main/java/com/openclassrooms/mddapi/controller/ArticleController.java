@@ -31,14 +31,14 @@ public class ArticleController {
     private final ArticleService articleService;
 
     /**
-     * Retrieves all articles from the database.
+     * Retrieves all articles linked to the authenticated user's subscribed themes.
      *
-     * @return List of all articles as DTOs
+     * @return List of filtered articles as DTOs
      */
     @GetMapping()
     @Operation(security = {@SecurityRequirement(name = "bearerAuth")})
-    public List<ArticleDto> findAll() {
-        return articleService.findAll();
+    public List<ArticleDto> findAll(@AuthenticationPrincipal Jwt jwt) {
+        return articleService.findAllForUserThemes(jwt);
     }
 
     /**
