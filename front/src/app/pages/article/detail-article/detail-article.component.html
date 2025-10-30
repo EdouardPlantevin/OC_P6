@@ -7,9 +7,8 @@
         <button class="back-btn" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
         <h2>{{ articleData.title }}</h2>
       </div>
-    <div class="flex gap-16">
-      <p>{{ articleData.createdAt | date }}</p>
-      <p>{{ articleData.author }}</p>
+    <div class="flex gap-16 xs-flex-col xs-gap-0">
+      <p>{{ articleData.createdAt | date }} <span class="ml-10">{{ articleData.author }}</span></p>
       <p>{{ articleData.theme }}</p>
     </div>
 
